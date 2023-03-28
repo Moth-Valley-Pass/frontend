@@ -1,0 +1,20 @@
+@import 'reset';
+
+.application {
+  font-family:  'Playfair Display', serif;
+  font-size: 106.25%;
+}
+
+#app {
+  font-family: 'Playfair Display', serif;
+  background-color: #000;
+  color: #fff;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+
+}
+.toasted {
+  font-family:'Playfair Display', serif !important;
+}
