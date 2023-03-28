@@ -1,5 +1,7 @@
 # Moth Valley Pass
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fb1f6e52-66aa-4305-9152-2c7252e7e4a5/deploy-status)](https://app.netlify.com/sites/mvalley/deploys)
+
 ## Installation
 
 ```bash
