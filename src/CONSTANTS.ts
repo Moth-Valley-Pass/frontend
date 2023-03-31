@@ -1,1 +1,1 @@
-export const ALLOW_DRAGGING = false;
+export const ALLOW_DRAGGING = true;

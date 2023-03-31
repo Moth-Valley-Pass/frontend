@@ -1,0 +1,214 @@
+/* @link https://d2kq0urxkarztv.cloudfront.net/634120d8603285003d4ad908/4009423/upload-581311c2-3860-4019-8e12-172be5df47dc.png?e=webp&nll=true */
+
+.translate-bottom-left {
+	transform: matrix(1, 0, 0, 1, 0, 0);
+	animation-name: translate-bottom-left;
+	animation-duration: 3.2s;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-fill-mode: none;
+	animation-play-state: running;
+}
+/* transform translate(-8px, -20px)
+ */
+@keyframes translate-bottom-left {
+	0% {
+		transform: matrix(1, 0, 0, 1, 0, 0);
+		opacity: 1;
+		animation-timing-function: ease-in-out;
+	}
+	100% {
+		transform: matrix(1, 0, 0, 1, -8, -20);
+		opacity: 1;
+	}
+}
+
+.translate-top-right {
+	transform: matrix(1, 0, 0, 1, 0, 0);
+	animation-name: translate-bottom-left;
+	animation-duration: 3.2s;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-fill-mode: none;
+	animation-play-state: running;
+}
+
+/* transform: translate(7px, 16px); */
+@keyframes translate-top-right {
+	0% {
+		transform: matrix(1, 0, 0, 1, 0, 0);
+		opacity: 1;
+		animation-timing-function: ease-in-out;
+	}
+
+	100% {
+		transform: matrix(1, 0, 0, 1, 7, 16);
+		opacity: 1;
+	}
+}
+
+/* https://d2kq0urxkarztv.cloudfront.net/634120d86032…c-bf26-4157-b399-1c892a76121a.png?e=webp&nll=true */
+
+.scale-down-0-8 {
+	transform: matrix(1, 0, 0, 1, 0, 0);
+
+	animation-name: scale-down-0-8;
+	animation-duration: 4.1s;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-fill-mode: none;
+	animation-play-state: running;
+}
+
+@keyframes scale-down-0-8 {
+	0% {
+		transform: matrix(1, 0, 0, 1, 0, 0);
+		opacity: 1;
+		animation-timing-function: ease-in-out;
+	}
+
+	100% {
+		transform: matrix(0.8, 0, 0, 0.8, 0, 0);
+		opacity: 1;
+	}
+}
+
+@keyframes scale-down-7 {
+	0% {
+		transform: matrix(1, 0, 0, 1, 0, 0);
+		opacity: 1;
+		animation-timing-function: ease-in-out;
+	}
+
+	100% {
+		transform: matrix(7, 0, 0, 7, 0, 0);
+		opacity: 1;
+	}
+}
+
+.tilted-rotation {
+	transform: matrix(0.996195, -0.0871557, 0.0871557, 0.996195, 0, 0);
+
+	animation-name: tilted-rotation;
+	animation-duration: 3.4s;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-fill-mode: none;
+	animation-play-state: running;
+}
+
+@keyframes tilted-rotation {
+	0% {
+		transform: translate(0px, 0px) rotate(-5deg) scale(1);
+		opacity: 1;
+		animation-timing-function: ease-in-out;
+	}
+	100% {
+		transform: translate(0px, 0px) rotate(10deg) scale(1);
+		opacity: 1;
+	}
+}
+
+.scale-down-translate-top-right {
+	transform: matrix(1, 0, 0, 1, 0, 0);
+
+	animation-name: scale-down-translate-top-right;
+	animation-duration: 9.5s;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-fill-mode: none;
+	animation-play-state: running;
+}
+
+@keyframes scale-down-translate-top-right {
+	0% {
+		transform: matrix(1, 0, 0, 1, 0, 0);
+		opacity: 1;
+		animation-timing-function: ease-in-out;
+	}
+
+	100% {
+		transform: matrix(0.91, 0, 0, 0.91, 35, -55);
+		opacity: 1;
+	}
+}
+
+.translate-bottom-right {
+	transform: matrix(1, 0, 0, 1, 0, 0);
+
+	animation-name: translate-bottom-right;
+	animation-duration: 10.2s;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-fill-mode: none;
+	animation-play-state: running;
+}
+
+@keyframes translate-bottom-right {
+	0% {
+		transform: matrix(1, 0, 0, 1, 0, 0);
+		opacity: 1;
+		animation-timing-function: ease-in-out;
+	}
+
+	100% {
+		transform: matrix(1, 0, 0, 1, 96, 46);
+		opacity: 1;
+	}
+}
+
+.translate-bottom-left-stones {
+	transform: matrix(1, 0, 0, 1, 0, 0);
+
+	animation-name: translate-bottom-left-stones;
+	animation-duration: 6.2s;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-fill-mode: none;
+	animation-play-state: running;
+}
+
+@keyframes translate-bottom-left-stones {
+	0% {
+		transform: matrix(1, 0, 0, 1, 0, 0);
+		opacity: 1;
+		animation-timing-function: ease-in-out;
+	}
+
+	100% {
+		transform: matrix(1, 0, 0, 1, 96, -46);
+		opacity: 1;
+	}
+}
+
+.translate-top-down-stones {
+	transform: matrix(1, 0, 0, 1, 0, 0);
+
+	animation-name: translate-top-down-stones;
+	animation-duration: 3.2s;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-fill-mode: none;
+	animation-play-state: running;
+}
+
+@keyframes translate-top-down-stones {
+	0% {
+		transform: matrix(1, 0, 0, 1, 0, 0);
+		opacity: 1;
+		animation-timing-function: ease-in-out;
+	}
+
+	100% {
+		transform: matrix(1, 0, 0, 1, 0, -96);
+		opacity: 1;
+	}
+}
