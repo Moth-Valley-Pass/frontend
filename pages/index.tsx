@@ -36,8 +36,8 @@ export default function Home() {
 					sx={{ opacity: 1, position: "absolute", inset: "0" }}
 				></BugsAndImages>
 
-				{/* <Layer1 sx={{ position: "absolute", inset: "0" }}></Layer1> */}
 				<LayerStones sx={{ position: "absolute", inset: "0" }}></LayerStones>
+				<Layer1 sx={{ position: "absolute", inset: "0" }}></Layer1>
 			</Box>
 		</>
 	);
