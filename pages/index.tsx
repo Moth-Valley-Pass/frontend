@@ -8,6 +8,7 @@ import Marquee from "react-fast-marquee";
 import { SxProps } from "@mui/material/styles";
 import BugsAndImages from "@/src/Bugs";
 import Draggable from "react-draggable";
+import LayerStones from "@/src/Stones";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -32,11 +33,11 @@ export default function Home() {
 			>
 				<MothValley sx={{ position: "absolute", inset: "0" }}></MothValley>
 				<BugsAndImages
-					sx={{ position: "absolute", inset: "0" }}
+					sx={{ opacity: 1, position: "absolute", inset: "0" }}
 				></BugsAndImages>
 
-				{/* <Layer1 sx={{ position: "absolute", inset: "0" }}></Layer1>
-				<LayerStones sx={{ position: "absolute", inset: "0" }}></LayerStones> */}
+				{/* <Layer1 sx={{ position: "absolute", inset: "0" }}></Layer1> */}
+				<LayerStones sx={{ position: "absolute", inset: "0" }}></LayerStones>
 			</Box>
 		</>
 	);
@@ -124,78 +125,6 @@ function MothValley({ sx }: { sx?: SxProps }) {
 			>
 				Moth <br /> Valley
 			</Typography>
-		</Box>
-	);
-}
-function LayerStones({ sx }: { sx?: SxProps }) {
-	const boxRef = useRef<HTMLDivElement>(null);
-	useEffect(() => {
-		boxRef.current!.querySelectorAll("img").forEach((img) => {
-			img.draggable = false;
-		});
-	});
-
-	return (
-		<Box
-			ref={boxRef}
-			sx={{
-				height: "100%",
-				...sx,
-				"&>*": {
-					position: "absolute",
-				},
-				"*:img": {
-					draggable: "false",
-				},
-			}}
-		>
-			<Image
-				style={{ top: 70, left: 210 }}
-				width={40}
-				height={40}
-				alt="rock"
-				src="/rock 1.png"
-			></Image>
-			<Box sx={{ top: 260, left: 190 }}>
-				<Image width={40} height={40} alt="rock" src="/rock 2a.png"></Image>
-				<Image width={40} height={40} alt="rock" src="/rock 2b.png"></Image>
-				<br />
-				<Image
-					style={{ visibility: "hidden" }}
-					width={40}
-					height={40}
-					alt="hidden"
-					src="/rock 2c.png"
-				></Image>
-				<Image width={40} height={40} alt="rock" src="/rock 2c.png"></Image>
-			</Box>
-			<Box sx={{ top: 420, left: 250 }}>
-				<Image width={40} height={40} alt="rock" src="/rock 3.png"></Image>
-			</Box>
-			<Box sx={{ top: 490, left: 310 }}>
-				<Image width={40} height={40} alt="rock" src="/rock 4a.png"></Image>
-				<Image width={40} height={40} alt="rock" src="/rock 4b.png"></Image>
-			</Box>
-			<Box sx={{ left: 1000, top: 500 }}>
-				<Image width={40} height={40} alt="rock" src="/rock 5.png"></Image>
-			</Box>
-			<Box sx={{ top: 800, left: 1500 }}>
-				<Image width={40} height={40} alt="rock" src="/rock 6a.png"></Image>
-				<Image width={40} height={40} alt="rock" src="/rock 6b.png"></Image>
-			</Box>
-			<Box sx={{ top: 500, left: 1500 }}>
-				<Image width={40} height={40} alt="rock" src="/rock 7a.png"></Image>
-				<Image width={40} height={40} alt="rock" src="/rock 7b.png"></Image>
-				<Image width={40} height={40} alt="rock" src="/rock 7c.png"></Image>
-				<Image width={40} height={40} alt="rock" src="/rock 7d.png"></Image>
-			</Box>
-			<Draggable axis="both">
-				<Box sx={{ backgroundColor: "red", top: 200, left: 800 }}>
-					<Image width={40} height={40} alt="rock" src="/rock 8a.png"></Image>
-					<Image width={40} height={40} alt="rock" src="/rock 8b.png"></Image>
-					<Image width={40} height={40} alt="rock" src="/rock 8c.png"></Image>
-				</Box>
-			</Draggable>
 		</Box>
 	);
 }
