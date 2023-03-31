@@ -6,7 +6,7 @@ import styles from "@/styles/Home.module.css";
 import { Stack, Box, Button, Typography } from "@mui/material";
 import Marquee from "react-fast-marquee";
 import { SxProps } from "@mui/material/styles";
-// import BugsAndImages from "@/src/Layer2";
+import BugsAndImages from "@/src/Bugs";
 import Draggable from "react-draggable";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,9 +31,9 @@ export default function Home() {
 				}}
 			>
 				<MothValley sx={{ position: "absolute", inset: "0" }}></MothValley>
-				{/* <BugsAndImages
+				<BugsAndImages
 					sx={{ position: "absolute", inset: "0" }}
-				></BugsAndImages> */}
+				></BugsAndImages>
 
 				{/* <Layer1 sx={{ position: "absolute", inset: "0" }}></Layer1>
 				<LayerStones sx={{ position: "absolute", inset: "0" }}></LayerStones> */}
