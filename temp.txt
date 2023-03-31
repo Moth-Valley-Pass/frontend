@@ -1,0 +1,32 @@
+please look at the following text and and match the first string value that is src to corresponding one in the previous array and add the top and left values as styles to the array. 
+useUndraggable.tsx?36f9:21 /rock 4a.png {top: 508, left: 1243}
+useUndraggable.tsx?36f9:26 Not contains
+useUndraggable.tsx?36f9:21 /rock 4b.png {top: 486, left: 1308}
+useUndraggable.tsx?36f9:26 Not contains
+useUndraggable.tsx?36f9:21 /rock 3.png {top: 488, left: 1368}
+useUndraggable.tsx?36f9:26 Not contains
+useUndraggable.tsx?36f9:21 /rock 5.png {top: 439, left: 1260}
+useUndraggable.tsx?36f9:26 Not contains
+useUndraggable.tsx?36f9:21 /rock 2b.png {top: 541, left: 1097}
+useUndraggable.tsx?36f9:26 Not contains
+useUndraggable.tsx?36f9:21 /rock 2c.png {top: 850, left: 1207}
+useUndraggable.tsx?36f9:26 Not contains
+useUndraggable.tsx?36f9:21 /rock 7b.png {top: 490, left: 659}
+useUndraggable.tsx?36f9:26 Not contains
+useUndraggable.tsx?36f9:21 /rock 7c.png {top: 451, left: 605}
+useUndraggable.tsx?36f9:26 Not contains
+useUndraggable.tsx?36f9:21 /rock 6b.png {top: 228, left: 791}
+useUndraggable.tsx?36f9:26 Not contains
+useUndraggable.tsx?36f9:21 /rock 7a.png {top: 184, left: 836}
+useUndraggable.tsx?36f9:26 Not contains
+useUndraggable.tsx?36f9:21 /rock 6a.png {top: 231, left: 864}
+useUndraggable.tsx?36f9:26 Not contains
+useUndraggable.tsx?36f9:21 /rock 7d.png {top: 408, left: 402}
+useUndraggable.tsx?36f9:26 Not contains
+useUndraggable.tsx?36f9:21 /rock 8a.png {top: 324, left: 393}
+useUndraggable.tsx?36f9:26 Not contains
+useUndraggable.tsx?36f9:21 /rock 8b.png {top: 243, left: 339}
+useUndraggable.tsx?36f9:26 Not contains
+useUndraggable.tsx?36f9:21 /rock 8c.png {top: 243, left: 402}
+useUndraggable.tsx?36f9:26 Not contains
+useUndraggable.tsx?36f9:21 /rock 2c.png {top: 138, left: 468}
