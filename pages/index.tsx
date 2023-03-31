@@ -6,7 +6,7 @@ import styles from "@/styles/Home.module.css";
 import { Stack, Box, Button, Typography } from "@mui/material";
 import Marquee from "react-fast-marquee";
 import { SxProps } from "@mui/material/styles";
-import BugsAndImages from "@/src/Layer2";
+// import BugsAndImages from "@/src/Layer2";
 import Draggable from "react-draggable";
 const inter = Inter({ subsets: ["latin"] });
 
