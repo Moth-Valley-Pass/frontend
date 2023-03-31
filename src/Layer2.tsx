@@ -11,12 +11,14 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 	const images = [
 		<Image
 			width={200}
+			key={1}
 			height={200}
 			alt="red flower"
 			style={{ top: "-50px", left: -25, objectFit: "contain" }}
 			src="/dark colorful flowerish.png"
 		></Image>,
 		<Image
+			key={2}
 			width={639}
 			height={639}
 			style={{ top: 98, left: -21, objectFit: "contain" }}
@@ -24,6 +26,7 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 			src="/crooked tree.png"
 		></Image>,
 		<Image
+			key={3}
 			width={200}
 			height={200}
 			style={{ top: 110, left: 187, objectFit: "contain" }}
@@ -31,6 +34,7 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 			src="/teapot.png"
 		></Image>,
 		<Image
+			key={4}
 			width={403}
 			height={403}
 			style={{ top: 552.46, left: 118, rotate: "-23deg", objectFit: "contain" }}
@@ -38,6 +42,7 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 			src="/moth goldish.png"
 		></Image>,
 		<Image
+			key={5}
 			width={298}
 			height={298}
 			style={{
@@ -50,6 +55,7 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 			src="/pumpkin onion.png"
 		></Image>,
 		<Image
+			key={6}
 			width={200}
 			height={200}
 			style={{
@@ -62,6 +68,7 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 			src="/hibiscus.png"
 		></Image>,
 		<Image
+			key={8}
 			width={440}
 			height={440}
 			style={{
@@ -74,6 +81,7 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 			src="/purplish moth.png"
 		></Image>,
 		<Image
+			key={9}
 			width={285}
 			height={285}
 			style={{
@@ -86,6 +94,7 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 			src="/green pumpkin.png"
 		></Image>,
 		<Image
+			key={10}
 			width={580}
 			height={580}
 			style={{
@@ -98,6 +107,7 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 			src="/greenish moth.png"
 		></Image>,
 		<Image
+			key={11}
 			width={759}
 			height={759}
 			style={{
@@ -110,6 +120,7 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 			src="/crooked branch.png"
 		></Image>,
 		<Image
+			key={12}
 			width={200}
 			height={200}
 			style={{
@@ -121,6 +132,7 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 			src="/pumpkin onion lit.png"
 		></Image>,
 		<Image
+			key={13}
 			width={376}
 			height={376}
 			style={{
@@ -133,6 +145,7 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 			src="/colorful 2 next to normal moth.png"
 		></Image>,
 		<Image
+			key={14}
 			width={200}
 			height={200}
 			style={{
@@ -145,6 +158,7 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 			src="/halloween pumpkin.png"
 		></Image>,
 		<Image
+			key={15}
 			width={355}
 			height={355}
 			style={{
@@ -157,6 +171,7 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 			src="/very normal moth.png"
 		></Image>,
 		<Image
+			key={16}
 			width={275}
 			height={275}
 			style={{
@@ -169,6 +184,7 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 			src="/moth pot.png"
 		></Image>,
 		<Image
+			key={17}
 			width={200}
 			height={200}
 			style={{
@@ -183,6 +199,7 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 			src="/capsicum.png"
 		></Image>,
 		<Image
+			key={18}
 			width={275}
 			height={275}
 			style={{
@@ -195,6 +212,7 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 			src="/colorful fly.png"
 		></Image>,
 		<Image
+			key={19}
 			width={400}
 			height={400}
 			style={{
@@ -206,6 +224,7 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 			src="/big moth.png"
 		></Image>,
 		<Image
+			key={20}
 			width={200}
 			height={200}
 			style={{
@@ -217,6 +236,7 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 			src="/shiny pumpkin.png"
 		></Image>,
 		<Image
+			key={21}
 			width={200}
 			height={200}
 			style={{
