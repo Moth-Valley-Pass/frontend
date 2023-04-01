@@ -1,7 +1,5 @@
-import Head from "next/head";
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
-import { Inter } from "next/font/google";
 import { Stack, Box, Button, Typography, Link } from "@mui/material";
 import Marquee from "react-fast-marquee";
 import { SxProps } from "@mui/material/styles";
