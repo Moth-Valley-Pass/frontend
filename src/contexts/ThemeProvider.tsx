@@ -18,6 +18,7 @@ const theme = createTheme({
 					border: "2px solid black",
 					fontWeight: "bold",
 					borderRadius: "12px",
+					textTransform: "none",
 				},
 			},
 		},

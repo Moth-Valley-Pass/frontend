@@ -60,7 +60,8 @@ function MothValley({ sx }: { sx?: SxProps }) {
 		>
 			<Typography
 				textAlign="center"
-				fontWeight={"bold"}
+				fontWeight={"800"}
+				fontFamily="'Hepta Slab', serif"
 				variant="h1"
 				sx={{ fontSize: "200px", textTransform: "uppercase" }}
 			>

@@ -51,7 +51,7 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 									alt="instagram"
 								></Image>
 							</Link>
-							<Link href="https://www.discord.com/mothvalley">
+							<Link href="https://discord.gg/mothvalley">
 								<Image
 									width={35}
 									style={{ objectFit: "contain" }}
@@ -63,18 +63,35 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 						</Stack>
 					</Box>
 
-					<Button>Connect Wallet</Button>
+					<Button sx={{ fontSize: "33px", px: 2 }}>Connect Wallet</Button>
 				</Stack>
 
 				<Box>
 					<Stack gap={2} alignItems="start">
-						<Link href="https://mothvalley.blog">
-							<Button>Blog</Button>
+						<Link
+							sx={{ textDecoration: "none" }}
+							href="https://mothvalley.blog"
+						>
+							<Button sx={{ fontSize: "33px", px: 2 }}>Blog</Button>
 						</Link>
-						<Button onClick={() => setSeasonsOpen(true)}>Season 1</Button>
-						<Button onClick={() => setfreeMintOpen(true)}>Free Mint</Button>
+						<Button
+							sx={{ fontSize: "33px", px: 2 }}
+							onClick={() => setSeasonsOpen(true)}
+						>
+							Season 1
+						</Button>
+						<Button
+							sx={{ fontSize: "33px", px: 2 }}
+							onClick={() => setfreeMintOpen(true)}
+						>
+							Free Mint
+						</Button>
 					</Stack>
-					<Marquee style={{ marginTop: "20px" }} gradientWidth={0} delay={0.5}>
+					<Marquee
+						style={{ fontSize: "30px", marginTop: "40px" }}
+						gradientWidth={0}
+						delay={0.5}
+					>
 						&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Mar 31st, 2023 - 875 Community
 						Members -Season 1: Game of Chance - 91 Unique Artworks - Mar
 					</Marquee>
