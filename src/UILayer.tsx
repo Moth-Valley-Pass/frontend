@@ -6,13 +6,16 @@ import { Stack, Box, Button, Typography, Link } from "@mui/material";
 import Marquee from "react-fast-marquee";
 import { SxProps } from "@mui/material/styles";
 import Seasons from "./components/Seasons";
+import FreeMint from "./components/FreeMint";
 
 export default function UILayer({ sx }: { sx?: SxProps }) {
 	const [seasonsOpen, setSeasonsOpen] = useState(false);
+	const [freeMintOpen, setfreeMintOpen] = useState(false);
 
 	return (
 		<Box sx={{ p: 5, height: "100%", ...sx }}>
 			<Seasons open={seasonsOpen} onClose={() => setSeasonsOpen(false)} />
+			<FreeMint open={freeMintOpen} onClose={() => setfreeMintOpen(false)} />
 			<Stack sx={{ height: "100%", justifyContent: "space-between" }}>
 				<Stack
 					direction="row"
@@ -69,7 +72,7 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 							<Button>Blog</Button>
 						</Link>
 						<Button onClick={() => setSeasonsOpen(true)}>Season 1</Button>
-						<Button>Free Mint</Button>
+						<Button onClick={() => setfreeMintOpen(true)}>Free Mint</Button>
 					</Stack>
 					<Marquee style={{ marginTop: "20px" }} gradientWidth={0} delay={0.5}>
 						&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Mar 31st, 2023 - 875 Community
