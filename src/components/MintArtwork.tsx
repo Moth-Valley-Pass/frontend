@@ -83,7 +83,7 @@ export function MintArtWorkHeading() {
 				width={100}
 				height={100}
 				alt="a of spades"
-				src="/folder.svg"
+				src="/Folder.svg"
 			></Image>
 			<Typography fontSize="70px" fontWeight="bold" variant="h1">
 				<i> Season 1:</i> Mint Artwork

@@ -139,7 +139,7 @@ export function Season1Heading() {
 				width={100}
 				height={100}
 				alt="a of spades"
-				src="/folder.svg"
+				src="/Folder.svg"
 			></Image>
 			<Typography fontSize="70px" fontWeight="bold" variant="h1">
 				<i style={{ fontWeight: "normal" }}> Season 1:</i> Game of Chance
