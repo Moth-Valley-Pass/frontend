@@ -9,6 +9,7 @@ import { SxProps } from "@mui/material/styles";
 import BugsAndImages from "@/src/Bugs";
 import Draggable from "react-draggable";
 import LayerStones from "@/src/Stones";
+import UILayer from "@/src/UILayer";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -28,6 +29,9 @@ export default function Home() {
 					"&>*": {
 						height: "100%",
 						overflow: "hidden",
+						img: {
+							userSelect: "none",
+						},
 					},
 				}}
 			>
@@ -37,72 +41,9 @@ export default function Home() {
 				></BugsAndImages>
 
 				<LayerStones sx={{ position: "absolute", inset: "0" }}></LayerStones>
-				<Layer1 sx={{ position: "absolute", inset: "0" }}></Layer1>
+				<UILayer sx={{ position: "absolute", inset: "0" }}></UILayer>
 			</Box>
 		</>
-	);
-}
-
-function Layer1({ sx }: { sx?: SxProps }) {
-	return (
-		<Box sx={{ p: 5, height: "100%", ...sx }}>
-			<Stack sx={{ height: "100%", justifyContent: "space-between" }}>
-				<Stack
-					direction="row"
-					justifyContent="space-between"
-					alignItems="start"
-				>
-					<Box>
-						<Typography
-							sx={{
-								fontWeight: "bold",
-								fontSize: "64px",
-								textTransform: "uppercase",
-							}}
-						>
-							APRIL 30th
-						</Typography>
-						<Stack gap={3} direction="row">
-							<Image
-								width={35}
-								height={35}
-								style={{ objectFit: "contain" }}
-								src="/twitter icon.png"
-								alt="twitter"
-							></Image>
-							<Image
-								width={35}
-								style={{ objectFit: "contain" }}
-								height={35}
-								src="/insta btn.png"
-								alt="instagram"
-							></Image>
-							<Image
-								width={35}
-								style={{ objectFit: "contain" }}
-								height={35}
-								src="/discord icon.png"
-								alt="discord"
-							></Image>
-						</Stack>
-					</Box>
-
-					<Button>Connect Wallet</Button>
-				</Stack>
-
-				<Box>
-					<Stack gap={2} alignItems="start">
-						<Button>Blog</Button>
-						<Button>Season 1</Button>
-						<Button>Free Mint</Button>
-					</Stack>
-					<Marquee style={{ marginTop: "20px" }} gradientWidth={0} delay={0.5}>
-						&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Mar 31st, 2023 - 875 Community
-						Members -Season 1: Game of Chance - 91 Unique Artworks - Mar
-					</Marquee>
-				</Box>
-			</Stack>
-		</Box>
 	);
 }
 
