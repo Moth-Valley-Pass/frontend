@@ -7,7 +7,12 @@ export default function MintArtwork() {
 	const [minted, setMinted] = useState(false);
 	return (
 		<Box>
-			<Stack alignItems={"start"} gap={5} direction="row">
+			<Stack
+				justifyContent={"space-between"}
+				alignItems={"start"}
+				gap={5}
+				direction="row"
+			>
 				<Image
 					alt="card fly"
 					src="/red fly card.svg"
@@ -39,20 +44,50 @@ export default function MintArtwork() {
 						></Box>
 					)}
 					{minted ? (
-						<Typography>You have revealed an artwork!</Typography>
+						<>
+							{" "}
+							<Typography fontWeight="bold" mt={3} variant="h6">
+								You have revealed an artwork!
+							</Typography>
+							<Typography fontWeight="bold" variant="h6">
+								Click <Link href="https://google.com"> here </Link> to view.
+							</Typography>
+						</>
 					) : (
-						<Button onClick={() => setMinted(true)}>Mint</Button>
+						<Button
+							sx={{ fontSize: "20px", my: 2, width: "100%" }}
+							onClick={() => setMinted(true)}
+						>
+							Mint
+						</Button>
 					)}
-					<Typography>
-						Click <Link href="https://google.com"> here </Link> to view.
-					</Typography>
 				</Box>
 			</Stack>
 			{minted ? (
-				<Typography>Burn success.</Typography>
+				<Typography fontWeight="bold" variant="h6">
+					Burn success.
+				</Typography>
 			) : (
-				<Typography>Click to select cards to burn</Typography>
+				<Typography fontWeight="bold" variant="h6">
+					Click to select cards to burn
+				</Typography>
 			)}
 		</Box>
+	);
+}
+export function MintArtWorkHeading() {
+	return (
+		<Stack alignItems="center" gap={5} direction="row">
+			<Image
+				style={{ objectFit: "contain" }}
+				width={100}
+				height={100}
+				alt="a of spades"
+				src="/folder.svg"
+			></Image>
+			<Typography fontSize="70px" fontWeight="bold" variant="h1">
+				<i> Season 1:</i> Mint Artwork
+			</Typography>
+		</Stack>
 	);
 }

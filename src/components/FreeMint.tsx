@@ -22,7 +22,7 @@ export default function FreeMint({
 	const [showMint, setShowMint] = useState(false);
 	return (
 		<Dialog maxWidth={false} open={open} onClose={onClose}>
-			<Box px={15} py={5}>
+			<Box sx={{ width: "min(1495px, 95vw)", height: "850px" }} px={15} py={5}>
 				<Box sx={{ position: "absolute", top: 50, right: 50 }}>
 					{
 						<IconButton
@@ -45,22 +45,26 @@ export default function FreeMint({
 						</IconButton>
 					}
 				</Box>
-				<Typography variant="h3">Mint a Moth Valley Pass</Typography>
-				<Divider sx={{ my: 5 }}></Divider>
+				<Typography fontWeight={"bold"} variant="h3">
+					Mint a Moth Valley Pass
+				</Typography>
+				<Divider sx={{ border: "2px solid black", my: 5 }}></Divider>
 				{checkingEligibility ? (
 					<Eligibility></Eligibility>
 				) : showMint ? (
 					<Mint></Mint>
 				) : (
-					<Stack gap={10} direction="row">
-						<Stack alignItems="center">
+					<Stack justifyContent="center" width="100%" gap={10} direction="row">
+						<Stack gap={4} alignItems="center">
 							<Image
 								width={485}
 								height={485}
 								alt="Green question mark"
 								src={"/green question mark.png"}
 							></Image>
-							<Typography variant="h5">1 Mint per wallet</Typography>
+							<Typography fontWeight="bold" variant="h4">
+								1 Mint per wallet
+							</Typography>
 						</Stack>
 						<Stack
 							alignSelf="stretch"
@@ -68,8 +72,18 @@ export default function FreeMint({
 							gap={5}
 							alignItems="center"
 						>
-							<Button onClick={() => setShowMint(true)}>Mint</Button>
-							<Button onClick={() => setCheckingEligibility(true)}>
+							<Button
+								size="large"
+								sx={{ fontSize: "50px", width: "344px", height: "122px" }}
+								onClick={() => setShowMint(true)}
+							>
+								Mint
+							</Button>
+							<Button
+								size="large"
+								sx={{ fontSize: "45px", width: "482px", height: "84px" }}
+								onClick={() => setCheckingEligibility(true)}
+							>
 								Eligibility
 							</Button>
 						</Stack>
@@ -87,8 +101,12 @@ function Eligibility() {
 	// const eligible = Boolean(walletAddress);
 	return (
 		<Box p={3}>
-			<Typography variant="h4">Check if you are whitelisted.</Typography>
-			<Typography variant="h4">Enter wallet address.</Typography>
+			<Typography fontWeight="bold" variant="h3">
+				Check if you are whitelisted.
+			</Typography>
+			<Typography fontWeight="bold" variant="h3">
+				Enter wallet address.
+			</Typography>
 			<form
 				onSubmit={(e) => {
 					e.preventDefault();
@@ -97,6 +115,7 @@ function Eligibility() {
 				}}
 			>
 				<TextField
+					sx={{ my: 3, width: "100%" }}
 					value={walletAddress}
 					onChange={(e) => {
 						setWalletAddress(e.target.value);
@@ -105,11 +124,23 @@ function Eligibility() {
 			</form>
 			{checkedEligibility &&
 				(eligible ? (
-					<Typography variant="h6">You are whitelisted.</Typography>
+					<Typography variant="h5">
+						You are <i> whitelisted.</i>
+					</Typography>
 				) : (
-					<Typography variant="h6">You are not whitelisted.</Typography>
+					<Typography variant="h5">
+						You are <i>not whitelisted.</i>
+					</Typography>
 				))}
 			<Button
+				sx={{
+					mx: "auto",
+					fontSize: 45,
+					width: 333,
+					height: 94,
+					display: "block",
+					mt: 10,
+				}}
 				onClick={() => {
 					setCheckedEligibility(true);
 					setEligible(Boolean(walletAddress));
@@ -131,8 +162,8 @@ function Mint() {
 	}, []);
 	return (
 		<Box>
-			<Stack gap={5} direction="row">
-				<Stack>
+			<Stack justifyContent="center" gap={5} direction="row">
+				<Stack gap={3}>
 					{poapClaimed ? (
 						<Image
 							width={485}
@@ -148,24 +179,42 @@ function Mint() {
 							alt="mint card"
 						></Image>
 					)}
-					<Typography>1 mint per wallet</Typography>
+					<Typography variant="h4" textAlign="center" fontWeight="bold">
+						{" "}
+						1 mint per wallet
+					</Typography>
 				</Stack>
 				{poapClaimed ? (
-					<Stack>
-						<Typography>Successful claim POAP 1/7.</Typography>
-						<Typography>
+					<Stack
+						justifyContent="center"
+						alignSelf="center"
+						alignItems={"center"}
+						sx={{ "*": { fontWeight: "bold" } }}
+					>
+						<Typography variant="h4">Successful claim POAP 1/7.</Typography>
+						<Typography variant="h4">
 							Click <Link href="https://google.com"> here</Link> to view
 						</Typography>
 					</Stack>
 				) : (
-					<Stack gap={1}>
-						<Typography>Mint successful</Typography>
-						<Typography>
+					<Stack sx={{ "*": { fontWeight: "bold" } }} gap={1}>
+						<Typography variant="h4">Mint successful</Typography>
+						<Typography variant="h4">
 							Click <Link href="https://google.com"> here</Link> to view
 						</Typography>
-						<Typography>Enter address to claim a POAP.</Typography>
+						<Typography variant="h4">Enter address to claim a POAP.</Typography>
 						<TextField></TextField>
-						<Button onClick={() => setPoapClaimed(true)}>Claim POAP</Button>
+						<Button
+							sx={{
+								alignSelf: "center",
+								fontSize: "40px",
+								width: "482px",
+								height: "82px",
+							}}
+							onClick={() => setPoapClaimed(true)}
+						>
+							Claim POAP
+						</Button>
 					</Stack>
 				)}
 			</Stack>

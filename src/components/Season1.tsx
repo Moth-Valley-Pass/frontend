@@ -19,17 +19,18 @@ export default function Season1({
 					src="/a of spades moth.jpg"
 				></Image>
 				<Box>
-					<Typography>
+					<Typography sx={{ fontSize: "30px" }} variant="h5">
 						S1 focuses on highlighting emerging artists just entering the crypto
 						space. Game of Chance is a curation of artworks from talented
 						artists who deserves more attention.
 					</Typography>
-					<Stack direction="row">
-						<Box sx={{ width: "50px" }}>
+					<Stack mt={3} direction="row">
+						<Box sx={{ position: "relative", width: "50px" }}>
 							<Image
 								style={{
-									position: "relative",
+									position: "absolute",
 									left: "-80px",
+									top: "10px",
 									objectFit: "contain",
 								}}
 								width={275}
@@ -38,14 +39,34 @@ export default function Season1({
 								src="/fly path.svg"
 							></Image>
 						</Box>
-						<Typography>Scroll down to find out more.</Typography>
+						<Typography sx={{ fontSize: "30px" }}>
+							Scroll down to find out more.
+						</Typography>
 					</Stack>
 
-					<Button onClick={() => setMintArtworkOpen(true)}>Mint</Button>
+					<Button
+						sx={{
+							width: 333,
+							height: 94,
+							display: "block",
+							mx: "auto",
+							mt: 10,
+							fontSize: "40px",
+						}}
+						onClick={() => setMintArtworkOpen(true)}
+					>
+						Mint
+					</Button>
 				</Box>
 			</Stack>
 
-			<Stack alignItems={"center"} direction="row" gap={3}>
+			<Stack
+				my={3}
+				justifyContent="space-between"
+				alignItems={"center"}
+				direction="row"
+				gap={3}
+			>
 				<Image
 					src="/7 of spades.svg"
 					width={237}
@@ -61,8 +82,10 @@ export default function Season1({
 				<Typography variant="h1">=</Typography>
 				<Image src="/moth man.jpg" width={486} height={486} alt="card"></Image>
 			</Stack>
-			<Box mt={5}>
-				<Typography variant="h4">Rules:</Typography>
+			<Box sx={{ my: 3, "&>*": { my: 1 } }} mt={5}>
+				<Typography fontWeight="bold" variant="h4">
+					Rules:
+				</Typography>
 				<Typography>
 					- Each Moth Valley Pass holder will be airdropped 2 random cards.
 				</Typography>
@@ -92,10 +115,35 @@ export default function Season1({
 			</Box>
 			<Button
 				onClick={() => setMintArtworkOpen(true)}
-				sx={{ display: "block", m: "auto" }}
+				sx={{
+					fontSize: "40px",
+					display: "block",
+					width: "333px",
+					height: "90px",
+					m: "70px auto",
+					mb: "100px",
+				}}
 			>
 				Mint
 			</Button>
+			<Box sx={{ height: "2px" }}></Box>
 		</Box>
+	);
+}
+
+export function Season1Heading() {
+	return (
+		<Stack alignItems="center" gap={5} direction="row">
+			<Image
+				style={{ objectFit: "contain" }}
+				width={100}
+				height={100}
+				alt="a of spades"
+				src="/folder.svg"
+			></Image>
+			<Typography fontSize="70px" fontWeight="bold" variant="h1">
+				<i style={{ fontWeight: "normal" }}> Season 1:</i> Game of Chance
+			</Typography>
+		</Stack>
 	);
 }

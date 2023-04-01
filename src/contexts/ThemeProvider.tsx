@@ -21,6 +21,18 @@ const theme = createTheme({
 				},
 			},
 		},
+		MuiDialog: {
+			styleOverrides: {
+				root: {
+					".MuiBackdrop-root": { backgroundColor: "transparent" },
+					".MuiPaper-root": {
+						backgroundColor: "#F5F5F5",
+						border: "2px solid black",
+						borderRadius: "12px",
+					},
+				},
+			},
+		},
 	},
 });
 export default function CustomThemeProvider({ children }: { children: any }) {
