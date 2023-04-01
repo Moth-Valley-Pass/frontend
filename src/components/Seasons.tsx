@@ -9,6 +9,7 @@ import {
 import React, { useState } from "react";
 import Image from "next/image";
 import Season1 from "./Season1";
+import MintArtwork from "./MintArtwork";
 
 export default function Seasons({
 	open,
@@ -18,6 +19,8 @@ export default function Seasons({
 	onClose: () => any;
 }) {
 	const [season1Open, setSeason1Open] = useState(false);
+	const [mintArtworkOpen, setMintArtworkOpen] = useState(false);
+
 	return (
 		<Dialog maxWidth={false} open={open} onClose={onClose}>
 			<Box
@@ -25,8 +28,18 @@ export default function Seasons({
 				p={5}
 			>
 				<Box sx={{ position: "absolute", top: 50, right: 50 }}>
-					{season1Open ? (
-						<IconButton onClick={() => setSeason1Open(false)}>
+					{
+						<IconButton
+							onClick={() => {
+								if (mintArtworkOpen) {
+									setMintArtworkOpen(false);
+								} else if (season1Open) {
+									setSeason1Open(false);
+								} else {
+									onClose();
+								}
+							}}
+						>
 							<Image
 								width={50}
 								height={50}
@@ -34,23 +47,16 @@ export default function Seasons({
 								alt="Close btn"
 							></Image>
 						</IconButton>
-					) : (
-						<IconButton onClick={onClose}>
-							<Image
-								width={50}
-								height={50}
-								src="/close.svg"
-								alt="Close btn"
-							></Image>
-						</IconButton>
-					)}
+					}
 				</Box>
 
 				<Typography variant="h1">Seasons</Typography>
 				<Divider></Divider>
 				{/* home */}
-				{season1Open ? (
-					<Season1 />
+				{mintArtworkOpen ? (
+					<MintArtwork />
+				) : season1Open ? (
+					<Season1 setMintArtworkOpen={setMintArtworkOpen} />
 				) : (
 					<Stack
 						gap={2}

@@ -1,8 +1,13 @@
 import { Box, Dialog, Button, Stack, Typography } from "@mui/material";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
-export default function Season1() {
+export default function Season1({
+	setMintArtworkOpen,
+}: {
+	setMintArtworkOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+	// const [mintArtworkOpen, setMintArtworkOpen] = useState(false);
 	return (
 		<Box>
 			<Stack p={5} gap={3} direction="row">
@@ -36,7 +41,7 @@ export default function Season1() {
 						<Typography>Scroll down to find out more.</Typography>
 					</Stack>
 
-					<Button>Mint</Button>
+					<Button onClick={() => setMintArtworkOpen(true)}>Mint</Button>
 				</Box>
 			</Stack>
 
@@ -85,7 +90,12 @@ export default function Season1() {
 					burning 8♣️ & K♦️ will give you an art work from Artist B, etc.{" "}
 				</Typography>
 			</Box>
-			<Button sx={{ display: "block", m: "auto" }}>Mint</Button>
+			<Button
+				onClick={() => setMintArtworkOpen(true)}
+				sx={{ display: "block", m: "auto" }}
+			>
+				Mint
+			</Button>
 		</Box>
 	);
 }
