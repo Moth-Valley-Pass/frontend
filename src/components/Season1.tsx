@@ -1,6 +1,12 @@
 import { Box, Dialog, Button, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import React, { useState } from "react";
+import ClubsIcon from "@/src/assets/clubs.svg";
+import DaimondIcon from "@/src/assets/daimond.svg";
+import HeartsIcon from "@/src/assets/heartsvg.svg";
+import SpadeIcon from "@/src/assets/spade.svg";
+
+function MintButton() {}
 
 export default function Season1({
 	setMintArtworkOpen,
@@ -10,16 +16,34 @@ export default function Season1({
 	// const [mintArtworkOpen, setMintArtworkOpen] = useState(false);
 	return (
 		<Box>
-			<Stack p={5} gap={3} direction="row">
-				<Image
-					style={{ objectFit: "contain" }}
-					width={611}
-					height={509}
-					alt="a of spades"
-					src="/a of spades moth.jpg"
-				></Image>
+			<Stack
+				sx={{ flexDirection: { xs: "column-reverse", lg: "row" } }}
+				p={{ xs: 2, md: 5 }}
+				alignItems={{ xs: "center", lg: "start" }}
+				gap={10}
+			>
+				<Box
+					sx={{
+						width: { xs: 400, xl: 611 },
+						// height: { xs: 400 / (611 / 509), xl: 509 },
+						aspectRatio: `${611 / 509}`,
+						maxWidth: "90%",
+						img: {},
+						position: "relative",
+					}}
+				>
+					<Image
+						style={{ objectFit: "contain" }}
+						fill
+						alt="a of spades"
+						src="/a of spades moth.jpg"
+					></Image>
+				</Box>
 				<Box>
-					<Typography sx={{ fontSize: "30px" }} variant="h5">
+					<Typography
+						sx={{ fontSize: { xs: "25px", xl: "30px" } }}
+						variant="h5"
+					>
 						S1 focuses on highlighting emerging artists just entering the crypto
 						space. Game of Chance is a curation of artworks from talented
 						artists who deserves more attention.
@@ -46,11 +70,12 @@ export default function Season1({
 
 					<Button
 						sx={{
-							width: 333,
-							height: 94,
+							px: { md: 5, xl: 15 },
+							// width: 333,
+							// height: 94,
 							display: "block",
 							mx: "auto",
-							mt: 10,
+							mt: { xs: 4, md: 10 },
 							fontSize: "40px",
 						}}
 						onClick={() => setMintArtworkOpen(true)}
@@ -64,8 +89,19 @@ export default function Season1({
 				my={3}
 				justifyContent="space-between"
 				alignItems={"center"}
-				direction="row"
+				direction={{ xs: "column", md: "row" }}
 				gap={3}
+				sx={{
+					img: {
+						width: { xs: 175, lg: 237 },
+						aspectRatio: `${237 / 352}`,
+					},
+					"img.moth-man": {
+						width: { xs: 265, lg: 486 },
+						height: { xs: 265, lg: 486 },
+						// aspectRatio: `1`,
+					},
+				}}
 			>
 				<Image
 					src="/7 of spades.svg"
@@ -80,7 +116,13 @@ export default function Season1({
 					alt="card"
 				></Image>
 				<Typography variant="h1">=</Typography>
-				<Image src="/moth man.jpg" width={486} height={486} alt="card"></Image>
+				<Image
+					className="moth-man"
+					src="/moth man.jpg"
+					width={486}
+					height={486}
+					alt="card"
+				></Image>
 			</Stack>
 			<Box sx={{ my: 3, "&>*": { my: 1 } }} mt={5}>
 				<Typography fontWeight="bold" variant="h4">
@@ -107,22 +149,27 @@ export default function Season1({
 				{" "}
 				<Typography>For example: </Typography>
 				<Typography>
-					burning A♥️ & 5♠️ will give you an art work from Artist A; and{" "}
+					burning A<Image width={15} height={15} src={HeartsIcon} alt="icon" />{" "}
+					& 5<Image width={15} height={15} src={SpadeIcon} alt="icon" /> will
+					give you an art work from Artist A; and{" "}
 				</Typography>
 				<Typography>
-					burning 8♣️ & K♦️ will give you an art work from Artist B, etc.{" "}
+					burning 8<Image width={15} height={15} src={ClubsIcon} alt="icon" /> &
+					K<Image width={15} height={15} src={DaimondIcon} alt="icon" /> will
+					give you an art work from Artist B, etc.{" "}
 				</Typography>
 			</Box>
 			<Button
-				onClick={() => setMintArtworkOpen(true)}
 				sx={{
-					fontSize: "40px",
+					px: { md: 5, xl: 15 },
+					// width: 333,
+					// height: 94,
 					display: "block",
-					width: "333px",
-					height: "90px",
-					m: "70px auto",
-					mb: "100px",
+					mx: "auto",
+					mt: { xs: 4, md: 10 },
+					fontSize: "40px",
 				}}
+				onClick={() => setMintArtworkOpen(true)}
 			>
 				Mint
 			</Button>
@@ -133,17 +180,32 @@ export default function Season1({
 
 export function Season1Heading() {
 	return (
-		<Stack alignItems="center" gap={5} direction="row">
-			<Image
-				style={{ objectFit: "contain" }}
-				width={100}
-				height={100}
-				alt="a of spades"
-				src="/Folder.svg"
-			></Image>
-			<Typography fontSize="70px" fontWeight="bold" variant="h1">
-				<i style={{ fontWeight: "normal" }}> Season 1:</i> Game of Chance
-			</Typography>
-		</Stack>
+		<Box sx={{ overflow: "auto" }}>
+			<Stack
+				alignItems="center"
+				gap={{ width: "max-content", xs: 2, md: 5 }}
+				direction="row"
+			>
+				<Box
+					sx={{
+						img: {
+							width: { xs: 40, md: 100 },
+							height: { xs: 40, md: 100 },
+						},
+					}}
+				>
+					<Image
+						style={{ objectFit: "contain" }}
+						width={100}
+						height={100}
+						alt="a of spades"
+						src="/Folder.svg"
+					></Image>
+				</Box>
+				<Typography fontWeight="bold" variant="h1">
+					<i style={{ fontWeight: "normal" }}> Season 1:</i> Game of Chance
+				</Typography>
+			</Stack>
+		</Box>
 	);
 }

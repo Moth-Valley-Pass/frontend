@@ -22,6 +22,7 @@ const theme = createTheme({
 				},
 			},
 		},
+
 		MuiDialog: {
 			styleOverrides: {
 				root: {
@@ -38,6 +39,15 @@ const theme = createTheme({
 		},
 	},
 });
+theme.typography.h1 = {
+	[theme.breakpoints.up("xs")]: {
+		fontSize: "30px",
+	},
+	[theme.breakpoints.up("md")]: {
+		fontSize: "70px",
+	},
+};
+
 export default function CustomThemeProvider({ children }: { children: any }) {
 	return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }
