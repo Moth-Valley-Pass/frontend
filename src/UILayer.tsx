@@ -5,11 +5,13 @@ import Marquee from "react-fast-marquee";
 import { SxProps } from "@mui/material/styles";
 import Seasons from "./components/Seasons";
 import FreeMint from "./components/FreeMint";
+import { useConnectWallet } from "@web3-onboard/react";
 
 export default function UILayer({ sx }: { sx?: SxProps }) {
 	const [seasonsOpen, setSeasonsOpen] = useState(false);
 	const [freeMintOpen, setfreeMintOpen] = useState(false);
-
+	const [{ wallet }, connect, disconnect] = useConnectWallet();
+	console.log(wallet);
 	return (
 		<Box sx={{ p: 5, height: "100%", ...sx }}>
 			<Seasons open={seasonsOpen} onClose={() => setSeasonsOpen(false)} />
@@ -61,7 +63,12 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 						</Stack>
 					</Box>
 
-					<Button sx={{ fontSize: "33px", px: 2 }}>Connect Wallet</Button>
+					<Button
+						onClick={() => (wallet ? disconnect(wallet) : connect())}
+						sx={{ fontSize: "33px", px: 2 }}
+					>
+						{wallet ? "Disconnect" : "Connect Wallet"}
+					</Button>
 				</Stack>
 
 				<Box>

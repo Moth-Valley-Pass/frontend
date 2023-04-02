@@ -31,7 +31,13 @@ export default function Seasons({
 				}}
 				p={5}
 			>
-				<Box sx={{ position: "absolute", top: 50, right: 50 }}>
+				<Box
+					sx={{
+						position: "absolute",
+						top: { xs: 25, md: 50 },
+						right: { xs: 55, md: 50 },
+					}}
+				>
 					{
 						<IconButton
 							onClick={() => {
@@ -42,6 +48,12 @@ export default function Seasons({
 								} else {
 									onClose();
 								}
+							}}
+							sx={{
+								img: {
+									width: { md: 50, xs: 25 },
+									height: { md: 50, xs: 25 },
+								},
 							}}
 						>
 							<Image
@@ -58,7 +70,11 @@ export default function Seasons({
 				) : season1Open ? (
 					<Season1Heading />
 				) : (
-					<Typography fontWeight="bold" variant="h1">
+					<Typography
+						sx={{ fontSize: { xs: "30px", md: "6rem" } }}
+						fontWeight="bold"
+						variant="h1"
+					>
 						Seasons
 					</Typography>
 				)}
@@ -70,13 +86,19 @@ export default function Seasons({
 					<Season1 setMintArtworkOpen={setMintArtworkOpen} />
 				) : (
 					<Stack
-						gap={10}
+						gap={{ xs: 5, md: 10 }}
 						p={3}
-						height="550px"
 						justifyContent={"center"}
 						alignItems={"center"}
 						margin={"auto"}
+						flexWrap={"wrap"}
 						direction="row"
+						sx={{
+							img: {
+								width: { md: "250px", xs: "100px" },
+								height: { md: "250px", xs: "100px" },
+							},
+						}}
 					>
 						<Stack alignItems="center">
 							<IconButton>

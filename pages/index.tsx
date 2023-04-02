@@ -10,6 +10,7 @@ import BugsAndImages from "@/src/Bugs";
 import Draggable from "react-draggable";
 import LayerStones from "@/src/Stones";
 import UILayer from "@/src/UILayer";
+import "@/src/initWallet";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
