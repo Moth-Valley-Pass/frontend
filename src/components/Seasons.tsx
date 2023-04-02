@@ -25,8 +25,9 @@ export default function Seasons({
 		<Dialog maxWidth={false} open={open} onClose={onClose}>
 			<Box
 				sx={{
-					width: "min(1495px, 95vw)",
-					height: "850px",
+					width: "min(1495px, 90vw)",
+					boxSizing: "border-box",
+					height: { md: "850px" },
 					position: "relative",
 				}}
 				p={5}

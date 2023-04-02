@@ -1,16 +1,23 @@
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
-import { Stack, Box, Button, Typography, Link } from "@mui/material";
+import { Stack, Alert, Box, Button, Typography, Link } from "@mui/material";
 import Marquee from "react-fast-marquee";
 import { SxProps } from "@mui/material/styles";
 import Seasons from "./components/Seasons";
 import FreeMint from "./components/FreeMint";
 import { useConnectWallet } from "@web3-onboard/react";
+import { useSetChain } from "@web3-onboard/react";
+import { NETWORK_ID, NETWORK_NAME } from "./CONSTANTS";
 
 export default function UILayer({ sx }: { sx?: SxProps }) {
 	const [seasonsOpen, setSeasonsOpen] = useState(false);
 	const [freeMintOpen, setfreeMintOpen] = useState(false);
 	const [{ wallet }, connect, disconnect] = useConnectWallet();
+	const [
+		{
+			connectedChain, // the current chain the user's wallet is
+		},
+	] = useSetChain();
 	console.log(wallet);
 	return (
 		<Box sx={{ p: 5, height: "100%", ...sx }}>
@@ -63,12 +70,23 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 						</Stack>
 					</Box>
 
-					<Button
-						onClick={() => (wallet ? disconnect(wallet) : connect())}
-						sx={{ fontSize: "33px", px: 2 }}
-					>
-						{wallet ? "Disconnect" : "Connect Wallet"}
-					</Button>
+					<Box>
+						<Button
+							onClick={() => (wallet ? disconnect(wallet) : connect())}
+							sx={{ fontSize: "33px", px: 2 }}
+						>
+							{wallet ? "Disconnect" : "Connect Wallet"}
+						</Button>
+						{connectedChain && Number(connectedChain.id) !== NETWORK_ID && (
+							<Alert
+								sx={{ my: 2, alignSelf: "center", mx: "atuo", width: "90%" }}
+								color="error"
+							>
+								Warning! Not connected to the&nbsp;
+								{NETWORK_NAME} network!
+							</Alert>
+						)}
+					</Box>
 				</Stack>
 
 				<Box>

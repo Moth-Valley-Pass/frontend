@@ -30,6 +30,8 @@ const theme = createTheme({
 						backgroundColor: "#F5F5F5",
 						border: "2px solid black",
 						borderRadius: "12px",
+						maxWidth: "none",
+						margin: "0",
 					},
 				},
 			},

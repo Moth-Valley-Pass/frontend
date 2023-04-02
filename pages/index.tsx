@@ -11,6 +11,7 @@ import Draggable from "react-draggable";
 import LayerStones from "@/src/Stones";
 import UILayer from "@/src/UILayer";
 import "@/src/initWallet";
+import MintProvider from "@/src/contexts/MintContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -36,13 +37,15 @@ export default function Home() {
 					},
 				}}
 			>
-				<MothValley sx={{ position: "absolute", inset: "0" }}></MothValley>
-				<BugsAndImages
-					sx={{ opacity: 1, position: "absolute", inset: "0" }}
-				></BugsAndImages>
+				<MintProvider>
+					<MothValley sx={{ position: "absolute", inset: "0" }}></MothValley>
+					<BugsAndImages
+						sx={{ opacity: 1, position: "absolute", inset: "0" }}
+					></BugsAndImages>
 
-				<LayerStones sx={{ position: "absolute", inset: "0" }}></LayerStones>
-				<UILayer sx={{ position: "absolute", inset: "0" }}></UILayer>
+					<LayerStones sx={{ position: "absolute", inset: "0" }}></LayerStones>
+					<UILayer sx={{ position: "absolute", inset: "0" }}></UILayer>
+				</MintProvider>
 			</Box>
 		</>
 	);
