@@ -32,6 +32,7 @@ const theme = createTheme({
 						border: "2px solid black",
 						borderRadius: "12px",
 						maxWidth: "95%",
+						maxHeight: "95vh",
 						margin: "0",
 					},
 				},

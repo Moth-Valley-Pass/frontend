@@ -28,7 +28,7 @@ export default function Seasons({
 				sx={{
 					width: "min(1495px, 90vw)",
 					boxSizing: "border-box",
-					height: { md: "850px" },
+					height: { md: "min(90vh, 900px)" },
 					position: "relative",
 				}}
 				py={{ xs: 5, md: 5 }}
