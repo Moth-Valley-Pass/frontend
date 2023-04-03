@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Season1, { Season1Heading } from "./Season1";
 import MintArtwork, { MintArtWorkHeading } from "./MintArtwork";
+import CloseBtn, { CloseBtnContainer } from "./CloseBtn";
 
 export default function Seasons({
 	open,
@@ -32,40 +33,19 @@ export default function Seasons({
 				}}
 				p={5}
 			>
-				<Box
-					sx={{
-						position: "absolute",
-						top: { xs: 25, md: 50 },
-						right: { xs: 55, md: 50 },
-					}}
-				>
-					{
-						<IconButton
-							onClick={() => {
-								if (mintArtworkOpen) {
-									setMintArtworkOpen(false);
-								} else if (season1Open) {
-									setSeason1Open(false);
-								} else {
-									onClose();
-								}
-							}}
-							sx={{
-								img: {
-									width: { md: 50, xs: 25 },
-									height: { md: 50, xs: 25 },
-								},
-							}}
-						>
-							<Image
-								width={50}
-								height={50}
-								src="/close.svg"
-								alt="Close btn"
-							></Image>
-						</IconButton>
-					}
-				</Box>
+				<CloseBtnContainer>
+					<CloseBtn
+						onClick={() => {
+							if (mintArtworkOpen) {
+								setMintArtworkOpen(false);
+							} else if (season1Open) {
+								setSeason1Open(false);
+							} else {
+								onClose();
+							}
+						}}
+					></CloseBtn>
+				</CloseBtnContainer>
 				{mintArtworkOpen ? (
 					<MintArtWorkHeading />
 				) : season1Open ? (

@@ -31,7 +31,7 @@ const theme = createTheme({
 						backgroundColor: "#F5F5F5",
 						border: "2px solid black",
 						borderRadius: "12px",
-						maxWidth: "none",
+						maxWidth: "95%",
 						margin: "0",
 					},
 				},

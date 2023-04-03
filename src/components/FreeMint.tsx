@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import CloseBtn from "./CloseBtn";
+import CloseBtn, { CloseBtnContainer } from "./CloseBtn";
 
 export default function FreeMint({
 	open,
@@ -29,7 +29,7 @@ export default function FreeMint({
 				px={{ xs: 3, md: 15 }}
 				py={5}
 			>
-				<Box sx={{ position: "absolute", top: 50, right: 50 }}>
+				<CloseBtnContainer>
 					<CloseBtn
 						onClick={() => {
 							if (checkingEligibility) {
@@ -41,7 +41,7 @@ export default function FreeMint({
 							}
 						}}
 					></CloseBtn>
-				</Box>
+				</CloseBtnContainer>
 
 				<Box sx={{ maxWidth: "90%", width: "max-content", overflow: "auto" }}>
 					<Typography
@@ -133,13 +133,15 @@ function Eligibility() {
 	const [walletAddress, setWalletAddress] = useState("");
 	// const eligible = Boolean(walletAddress);
 	return (
-		<Box p={3}>
-			<Typography fontWeight="bold" variant="h3">
-				Check if you are whitelisted.
-			</Typography>
-			<Typography fontWeight="bold" variant="h3">
-				Enter wallet address.
-			</Typography>
+		<Box>
+			<Box sx={{ "&>*": { fontSize: { xs: "25px", md: "3rem" } } }}>
+				<Typography fontWeight="bold" variant="h3">
+					Check if you are whitelisted.
+				</Typography>
+				<Typography fontWeight="bold" variant="h3">
+					Enter wallet address.
+				</Typography>
+			</Box>
 			<form
 				onSubmit={(e) => {
 					e.preventDefault();
@@ -168,9 +170,8 @@ function Eligibility() {
 			<Button
 				sx={{
 					mx: "auto",
-					fontSize: 45,
-					width: 333,
-					height: 94,
+					fontSize: { xs: 30, md: 45 },
+					px: { md: 13, xs: 5 },
 					display: "block",
 					mt: 10,
 				}}
