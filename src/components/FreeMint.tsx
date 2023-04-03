@@ -84,7 +84,10 @@ export default function FreeMint({
 								></Image>
 							</Box>
 							<Typography
-								sx={{ textAlign: { md: "start", xs: "center" } }}
+								sx={{
+									fontSize: { lg: "2.125rem", xs: "25px" },
+									textAlign: { md: "start", xs: "center" },
+								}}
 								fontWeight="bold"
 								variant="h4"
 							>
@@ -135,7 +138,11 @@ function Eligibility() {
 	// const eligible = Boolean(walletAddress);
 	return (
 		<Box>
-			<Box sx={{ "&>*": { fontSize: { xs: "25px !important", md: "3rem" } } }}>
+			<Box
+				sx={{
+					"&>*": { fontSize: { xs: "25px !important", md: "3rem !important" } },
+				}}
+			>
 				<Typography fontWeight="bold" variant="h3">
 					Check if you are whitelisted.
 				</Typography>
@@ -174,7 +181,7 @@ function Eligibility() {
 					fontSize: { xs: 30, md: 45 },
 					px: { md: 13, xs: 5 },
 					display: "block",
-					mt: 10,
+					mt: { xs: 5, lg: 10 },
 				}}
 				onClick={() => {
 					setCheckedEligibility(true);
@@ -202,7 +209,7 @@ function Mint() {
 			gap={5}
 			direction={{ xs: "column", lg: "row" }}
 		>
-			<Stack gap={3} alignItems={{ md: "start", xs: "center" }}>
+			<Stack gap={3} alignItems={{ lg: "start", xs: "center" }}>
 				<Box
 					sx={{
 						position: "relative",
@@ -223,7 +230,12 @@ function Mint() {
 						alt="mint card"
 					></Image>
 				</Box>
-				<Typography variant="h4" textAlign="center" fontWeight="bold">
+				<Typography
+					sx={{ fontSize: { lg: "2.125rem", xs: "25px" } }}
+					variant="h4"
+					textAlign="center"
+					fontWeight="bold"
+				>
 					{" "}
 					1 mint per wallet
 				</Typography>
@@ -232,7 +244,7 @@ function Mint() {
 				sx={{
 					h4: {
 						fontSize: { xs: "25px", md: "2.125rem" },
-						textAlign: { xs: "center", md: "start" },
+						textAlign: { xs: "center", lg: "start" },
 					},
 				}}
 			>
@@ -249,7 +261,7 @@ function Mint() {
 						</Typography>
 					</Stack>
 				) : (
-					<Stack sx={{ "*": { fontWeight: "bold" } }} gap={1}>
+					<Stack sx={{ "*": { fontWeight: "bold !important" } }} gap={2}>
 						<Typography variant="h4">Mint successful</Typography>
 						<Typography variant="h4">
 							Click <Link href="https://google.com"> here</Link> to view
