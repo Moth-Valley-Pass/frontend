@@ -71,7 +71,8 @@ function MothValley({ sx }: { sx?: SxProps }) {
 					fontSize: {
 						xs: "50px !important",
 						sm: "80px !important",
-						md: "200px !important",
+						md: "150px !important",
+						lg: "220px !important",
 					},
 					textTransform: "uppercase",
 				}}

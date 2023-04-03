@@ -46,7 +46,7 @@ const images: {
 		height: 403,
 		style: { top: 556.46, left: 62, rotate: "-23deg", objectFit: "contain" },
 		src: "/moth goldish.png",
-		className: "tilted-rotation",
+		className: "tilted-rotation gold-moth",
 	},
 	{
 		width: 298,
@@ -100,7 +100,7 @@ const images: {
 			objectFit: "contain",
 		},
 		src: "/big fire moth.png",
-		className: "tilted-rotation",
+		className: "tilted-rotation big-fire-moth",
 	},
 	{
 		width: 759,
@@ -234,7 +234,7 @@ const images: {
 ];
 
 /** Moths, flowers, and other big objects */
-export default function Layer2({ sx }: { sx?: SxProps }) {
+export default function BugsLargest({ sx }: { sx?: SxProps }) {
 	const ref = useUndraggable();
 	return (
 		<Box
@@ -242,23 +242,129 @@ export default function Layer2({ sx }: { sx?: SxProps }) {
 			sx={{
 				height: "100%",
 				...sx,
+			}}
+		>
+			<Box
+				sx={{
+					height: "100%",
+					display: { lg: "none", xs: "block" },
+				}}
+			>
+				<BugsLarge />
+			</Box>
+			<Box
+				sx={{
+					"&>*": {
+						position: "absolute",
+					},
+					height: "100%",
+					display: { xs: "none", lg: "block" },
+				}}
+			>
+				{images.map((elem, index) => {
+					return (
+						<Draggable disabled={!ALLOW_DRAGGING} key={index}>
+							<Image
+								className={elem.className}
+								src={elem.src}
+								width={elem.width}
+								height={elem.height}
+								style={elem.style}
+								alt={elem.src}
+							></Image>
+						</Draggable>
+					);
+				})}
+			</Box>
+		</Box>
+	);
+}
+
+const imagesResponsive: {
+	width: number;
+	height: number;
+	style: React.CSSProperties;
+	src: string;
+	className?: string;
+}[] = [
+	{
+		width: 810,
+		height: 810,
+		style: {
+			rotate: "-7deg",
+			zIndex: 2,
+			objectFit: "contain",
+			bottom: 0,
+			width: "400px",
+			height: "400px",
+			right: 0,
+			translate: "25% 25%",
+		},
+		src: "/big fire moth.png",
+		className: "tilted-rotation big-fire-moth",
+	},
+	{
+		width: 639,
+		height: 639,
+		style: {
+			transform: "translateX(-35%) translateY(15%)",
+			left: 0,
+			bottom: 0,
+			objectFit: "contain",
+		},
+		// className: "translate-bottom-left",
+		src: "/crooked tree.png",
+	},
+	{
+		width: 100,
+		height: 100,
+		style: {
+			top: "calc(50% - 50px)",
+			left: "calc(50% - 50px)",
+			transform: "translateY(-50%) translateX(-50%)",
+			objectFit: "contain",
+		},
+		src: "/dark colorful flowerish.png",
+		className: "scale-down-0-8",
+	},
+	{
+		width: 255,
+		height: 255,
+		style: {
+			top: 17.46000000000001,
+			right: 0,
+			rotate: "-10deg",
+			objectFit: "contain",
+		},
+		src: "/very normal moth.png",
+		className: "scale-down-translate-top-right",
+	},
+];
+
+function BugsLarge({ sx }: { sx?: SxProps }) {
+	return (
+		<Box
+			sx={{
+				width: "100vw",
+				position: "relative",
 				"&>*": {
 					position: "absolute",
 				},
+
+				height: "100%",
 			}}
 		>
-			{images.map((elem, index) => {
+			{imagesResponsive.map((elem, index) => {
 				return (
-					<Draggable disabled={!ALLOW_DRAGGING} key={index}>
-						<Image
-							className={elem.className}
-							src={elem.src}
-							width={elem.width}
-							height={elem.height}
-							style={elem.style}
-							alt={elem.src}
-						></Image>
-					</Draggable>
+					<Image
+						key={index}
+						className={elem.className}
+						src={elem.src}
+						width={elem.width}
+						height={elem.height}
+						style={elem.style}
+						alt={elem.src}
+					></Image>
 				);
 			})}
 		</Box>

@@ -212,3 +212,28 @@
 		opacity: 1;
 	}
 }
+
+.translate-right-left-stones-slow {
+	transform: matrix(1, 0, 0, 1, 0, 0);
+
+	animation-name: translate-right-left-stones-slow;
+	animation-duration: 6.2s;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-fill-mode: none;
+	animation-play-state: running;
+}
+
+@keyframes translate-right-left-stones-slow {
+	0% {
+		transform: matrix(1, 0, 0, 1, 0, 0);
+		opacity: 1;
+		animation-timing-function: ease-in-out;
+	}
+
+	100% {
+		transform: matrix(1, 0, 0, 1, -116, 0);
+		opacity: 1;
+	}
+}

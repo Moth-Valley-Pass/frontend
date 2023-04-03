@@ -21,10 +21,10 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 	] = useSetChain();
 	const effect = 1;
 	const [{ contract }] = useMint();
-	useEffect(() => {
-		console.log(contract);
-		contract?.getStage().then((res) => console.log("Stage", res));
-	}, [effect, contract]);
+	// useEffect(() => {
+	// 	console.log(contract);
+	// 	contract?.getStage().then((res) => console.log("Stage", res));
+	// }, [effect, contract]);
 	return (
 		<Box sx={{ p: { xs: 2, md: 5 }, height: "100%", ...sx }}>
 			<Seasons open={seasonsOpen} onClose={() => setSeasonsOpen(false)} />
