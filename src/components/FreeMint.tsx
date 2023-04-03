@@ -11,6 +11,8 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import CloseBtn from "./CloseBtn";
+
 export default function FreeMint({
 	open,
 	onClose,
@@ -22,47 +24,69 @@ export default function FreeMint({
 	const [showMint, setShowMint] = useState(false);
 	return (
 		<Dialog maxWidth={false} open={open} onClose={onClose}>
-			<Box sx={{ width: "min(1495px, 95vw)", height: "850px" }} px={15} py={5}>
+			<Box
+				sx={{ width: "min(1495px, 100%)", mx: "auto", height: { md: "850px" } }}
+				px={{ xs: 3, md: 15 }}
+				py={5}
+			>
 				<Box sx={{ position: "absolute", top: 50, right: 50 }}>
-					{
-						<IconButton
-							onClick={() => {
-								if (checkingEligibility) {
-									setCheckingEligibility(false);
-								} else if (showMint) {
-									setShowMint(false);
-								} else {
-									onClose();
-								}
-							}}
-						>
-							<Image
-								width={50}
-								height={50}
-								src="/close.svg"
-								alt="Close btn"
-							></Image>
-						</IconButton>
-					}
+					<CloseBtn
+						onClick={() => {
+							if (checkingEligibility) {
+								setCheckingEligibility(false);
+							} else if (showMint) {
+								setShowMint(false);
+							} else {
+								onClose();
+							}
+						}}
+					></CloseBtn>
 				</Box>
-				<Typography fontWeight={"bold"} variant="h3">
-					Mint a Moth Valley Pass
-				</Typography>
+
+				<Box sx={{ maxWidth: "90%", width: "max-content", overflow: "auto" }}>
+					<Typography
+						sx={{
+							whiteSpace: "nowrap",
+							// overflow: "auto",
+							fontSize: { xs: "30px", md: "3rem" },
+						}}
+						fontWeight={"bold"}
+						variant="h3"
+					>
+						Mint a Moth Valley Pass
+					</Typography>
+				</Box>
 				<Divider sx={{ border: "2px solid black", my: 5 }}></Divider>
 				{checkingEligibility ? (
 					<Eligibility></Eligibility>
 				) : showMint ? (
 					<Mint></Mint>
 				) : (
-					<Stack justifyContent="center" width="100%" gap={10} direction="row">
-						<Stack gap={4} alignItems="center">
-							<Image
-								width={485}
-								height={485}
-								alt="Green question mark"
-								src={"/green question mark.png"}
-							></Image>
-							<Typography fontWeight="bold" variant="h4">
+					<Stack
+						justifyContent="center"
+						gap={10}
+						direction={{ xs: "column", lg: "row" }}
+					>
+						<Stack sx={{ img: {} }} gap={4} alignItems="center">
+							<Box
+								sx={{
+									width: { xs: 300, lg: 485 },
+									aspectRatio: "1",
+									position: "relative",
+									maxWidth: "100%",
+								}}
+							>
+								<Image
+									fill
+									alt="Green question mark"
+									src={"/green question mark.png"}
+								></Image>
+							</Box>
+							<Typography
+								sx={{ textAlign: { md: "start", xs: "center" } }}
+								fontWeight="bold"
+								variant="h4"
+							>
 								1 Mint per wallet
 							</Typography>
 						</Stack>
@@ -71,17 +95,26 @@ export default function FreeMint({
 							justifyContent="center"
 							gap={5}
 							alignItems="center"
+							sx={{ "&>*": { maxWidth: "100%" } }}
 						>
 							<Button
 								size="large"
-								sx={{ fontSize: "50px", width: "344px", height: "122px" }}
+								sx={{
+									fontSize: { xs: 30, md: "50px" },
+									px: { xs: 5, lg: 13 },
+									py: { xs: 0, lg: 3 },
+								}}
 								onClick={() => setShowMint(true)}
 							>
 								Mint
 							</Button>
 							<Button
 								size="large"
-								sx={{ fontSize: "45px", width: "482px", height: "84px" }}
+								sx={{
+									fontSize: { xs: 30, md: "45px" },
+									px: { xs: 5, lg: 13 },
+									py: { xs: 0, lg: 3 },
+								}}
 								onClick={() => setCheckingEligibility(true)}
 							>
 								Eligibility
