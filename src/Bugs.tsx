@@ -103,6 +103,19 @@ const images: IImage[] = [
 		className: "tilted-rotation big-fire-moth",
 	},
 	{
+		width: 162,
+		height: 162,
+		style: {
+			top: 422.164,
+			left: 1428.22,
+			rotate: "-7deg",
+			zIndex: 2,
+			objectFit: "contain",
+		},
+		src: "/light emitting flower.png",
+		className: "scale-down-0-8",
+	},
+	{
 		width: 759,
 		height: 759,
 		style: {
@@ -232,7 +245,9 @@ const images: IImage[] = [
 		className: "scale-down-0-8",
 	},
 ];
-
+// images.forEach((img) => {
+// 	delete img.className;
+// });
 /** Moths, flowers, and other big objects */
 export default function BugsLargest({ sx }: { sx?: SxProps }) {
 	const ref = useUndraggable();

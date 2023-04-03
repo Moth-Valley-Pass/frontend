@@ -1,4 +1,4 @@
-export const ALLOW_DRAGGING = false;
+export const ALLOW_DRAGGING = true;
 export const AVAX_TESTNET = "https://api.avax-test.network/ext/bc/C/rpc";
 export const OWNER_EMAIL = "email@email.com";
 
