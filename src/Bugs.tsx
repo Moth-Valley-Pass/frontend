@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { Stack, Box, Button, Typography } from "@mui/material";
 import { SxProps } from "@mui/material/styles";
 import Draggable from "react-draggable";
@@ -12,14 +12,14 @@ let animationNames = [
 	"scale-down-0-8",
 	"scale-down-translate-top-right",
 ];
-
-const images: {
+interface IImage {
 	width: number;
 	height: number;
 	style: React.CSSProperties;
 	src: string;
 	className?: string;
-}[] = [
+}
+const images: IImage[] = [
 	{
 		width: 200,
 		height: 200,
@@ -236,6 +236,70 @@ const images: {
 /** Moths, flowers, and other big objects */
 export default function BugsLargest({ sx }: { sx?: SxProps }) {
 	const ref = useUndraggable();
+	const [newImages, setNewImages] = useState<IImage[]>(
+		JSON.parse(JSON.stringify(images))
+	);
+	const [resizedOnce, setResizedOnce] = useState(false);
+
+	const convertLeftTop = useCallback(function (
+		left: number,
+		top: number,
+		width: number,
+		height: number
+	) {
+		const originalWidth = 1842;
+		const originalHeight = 1009;
+
+		const proportionalLeft = (left / originalWidth) * width;
+		const proportionalTop = (top / originalHeight) * height;
+
+		return {
+			left: proportionalLeft,
+			top: proportionalTop,
+		};
+	},
+	[]);
+
+	useEffect(() => {
+		let handlerTimer: null | ReturnType<typeof setTimeout>;
+		if (!resizedOnce) {
+			setResizedOnce(true);
+			handler(undefined, true);
+		}
+		function handler(e?: Event, immediate?: boolean) {
+			const { innerWidth, innerHeight } = window;
+			let newImagesToSet = structuredClone(images).map((img) => {
+				const { left, top } = convertLeftTop(
+					parseInt(String(img.style.left) || String(0)),
+					parseInt(String(img.style.top) || String(0)),
+					innerWidth,
+					innerHeight
+				);
+				img.style.left = `${left}px`;
+				img.style.top = `${top}px`;
+				const widthHeightRatio = img.width / img.height;
+
+				img.width = (innerWidth / 1842) * img.width;
+				img.height = img.width / widthHeightRatio;
+
+				return img;
+			});
+			if (!immediate) {
+				handlerTimer && clearTimeout(handlerTimer);
+				handlerTimer = setTimeout(() => {
+					setNewImages(newImagesToSet);
+				}, 1000);
+			} else {
+				setNewImages(newImagesToSet);
+			}
+		}
+		window.addEventListener("resize", handler);
+
+		return () => {
+			window.removeEventListener("resize", handler);
+		};
+	}, [convertLeftTop, newImages, resizedOnce]);
+
 	return (
 		<Box
 			ref={ref}
@@ -261,7 +325,7 @@ export default function BugsLargest({ sx }: { sx?: SxProps }) {
 					display: { xs: "none", lg: "block" },
 				}}
 			>
-				{images.map((elem, index) => {
+				{newImages.map((elem, index) => {
 					return (
 						<Draggable disabled={!ALLOW_DRAGGING} key={index}>
 							<Image
