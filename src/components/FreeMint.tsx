@@ -134,7 +134,7 @@ function Eligibility() {
 	// const eligible = Boolean(walletAddress);
 	return (
 		<Box>
-			<Box sx={{ "&>*": { fontSize: { xs: "25px", md: "3rem" } } }}>
+			<Box sx={{ "&>*": { fontSize: { xs: "25px !important", md: "3rem" } } }}>
 				<Typography fontWeight="bold" variant="h3">
 					Check if you are whitelisted.
 				</Typography>

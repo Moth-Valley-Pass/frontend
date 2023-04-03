@@ -20,7 +20,7 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 	] = useSetChain();
 	console.log(wallet);
 	return (
-		<Box sx={{ p: 5, height: "100%", ...sx }}>
+		<Box sx={{ p: { xs: 2, md: 5 }, height: "100%", ...sx }}>
 			<Seasons open={seasonsOpen} onClose={() => setSeasonsOpen(false)} />
 			<FreeMint open={freeMintOpen} onClose={() => setfreeMintOpen(false)} />
 			<Stack sx={{ height: "100%", justifyContent: "space-between" }}>
@@ -33,7 +33,7 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 						<Typography
 							sx={{
 								fontWeight: "bold",
-								fontSize: "64px",
+								fontSize: { xs: "35px", md: "64px" },
 								textTransform: "uppercase",
 							}}
 						>
@@ -73,7 +73,11 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 					<Box>
 						<Button
 							onClick={() => (wallet ? disconnect(wallet) : connect())}
-							sx={{ fontSize: "33px", px: 2 }}
+							sx={{
+								fontSize: { xs: "20px", md: "33px" },
+								px: { xs: 1, md: 2 },
+								display: { md: "block", xs: "none" },
+							}}
 						>
 							{wallet ? "Disconnect" : "Connect Wallet"}
 						</Button>
@@ -90,34 +94,48 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 				</Stack>
 
 				<Box>
-					<Stack gap={2} alignItems="start">
+					<Button
+						onClick={() => (wallet ? disconnect(wallet) : connect())}
+						sx={{
+							fontSize: { xs: "20px", md: "33px" },
+							px: { xs: 1, md: 2 },
+							mb: 3,
+							display: { xs: "block", md: "none" },
+						}}
+					>
+						{wallet ? "Disconnect" : "Connect Wallet"}
+					</Button>
+
+					<Stack
+						sx={{
+							button: {
+								fontSize: { xs: "20px", md: "33px" },
+								px: { md: 2, xs: 1 },
+							},
+						}}
+						gap={{ xs: 0.5, md: 2 }}
+						alignItems="start"
+					>
 						<Link
 							sx={{ textDecoration: "none" }}
 							href="https://mothvalley.blog"
 						>
-							<Button sx={{ fontSize: "33px", px: 2 }}>Blog</Button>
+							<Button>Blog</Button>
 						</Link>
-						<Button
-							sx={{ fontSize: "33px", px: 2 }}
-							onClick={() => setSeasonsOpen(true)}
-						>
-							Season 1
-						</Button>
-						<Button
-							sx={{ fontSize: "33px", px: 2 }}
-							onClick={() => setfreeMintOpen(true)}
-						>
-							Free Mint
-						</Button>
+						<Button onClick={() => setSeasonsOpen(true)}>Season 1</Button>
+						<Button onClick={() => setfreeMintOpen(true)}>Free Mint</Button>
 					</Stack>
-					<Marquee
-						style={{ fontSize: "30px", marginTop: "40px" }}
-						gradientWidth={0}
-						delay={0.5}
+					<Box
+						sx={{
+							fontSize: { xs: "20px", md: "30px" },
+							marginTop: { xs: "15px", md: "40px" },
+						}}
 					>
-						&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Mar 31st, 2023 - 875 Community
-						Members -Season 1: Game of Chance - 91 Unique Artworks - Mar
-					</Marquee>
+						<Marquee gradientWidth={0} delay={0.5}>
+							&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Mar 31st, 2023 - 875 Community
+							Members -Season 1: Game of Chance - 91 Unique Artworks - Mar
+						</Marquee>
+					</Box>
 				</Box>
 			</Stack>
 		</Box>

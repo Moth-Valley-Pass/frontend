@@ -67,7 +67,14 @@ function MothValley({ sx }: { sx?: SxProps }) {
 				fontWeight={"800"}
 				fontFamily="'Hepta Slab', serif"
 				variant="h1"
-				sx={{ fontSize: "200px", textTransform: "uppercase" }}
+				sx={{
+					fontSize: {
+						xs: "50px !important",
+						sm: "80px !important",
+						md: "200px !important",
+					},
+					textTransform: "uppercase",
+				}}
 			>
 				Moth <br /> Valley
 			</Typography>
