@@ -43,7 +43,7 @@ theme.typography.h1 = {
 	[theme.breakpoints.up("xs")]: {
 		fontSize: "30px",
 	},
-	[theme.breakpoints.up("md")]: {
+	[theme.breakpoints.up("lg")]: {
 		fontSize: "70px",
 	},
 };

@@ -31,7 +31,8 @@ export default function Seasons({
 					height: { md: "850px" },
 					position: "relative",
 				}}
-				p={5}
+				py={{ xs: 5, md: 5 }}
+				px={{ xs: 2, md: 5 }}
 			>
 				<CloseBtnContainer>
 					<CloseBtn
@@ -51,11 +52,7 @@ export default function Seasons({
 				) : season1Open ? (
 					<Season1Heading />
 				) : (
-					<Typography
-						sx={{ fontSize: { xs: "30px", md: "6rem" } }}
-						fontWeight="bold"
-						variant="h1"
-					>
+					<Typography fontWeight="bold" variant="h1">
 						Seasons
 					</Typography>
 				)}

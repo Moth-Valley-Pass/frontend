@@ -6,50 +6,61 @@ import React, { useState } from "react";
 export default function MintArtwork() {
 	const [minted, setMinted] = useState(false);
 	return (
-		<Box p={1}>
+		<Box sx={{ maxWidth: "100%" }}>
 			<Stack
 				justifyContent={"space-between"}
 				alignItems={{ xs: "center", lg: "start" }}
-				gap={5}
+				gap={{ xs: 2, md: 5 }}
+				sx={{
+					".img-container": {
+						position: "relative",
+						width: 264,
+						height: 393,
+						maxWidth: "100%",
+					},
+					".img-container.minted": {
+						width: 410,
+						height: 410,
+					},
+				}}
 				direction={{ xs: "column", lg: "row" }}
 			>
-				<Image
-					alt="card fly"
-					src="/red fly card.svg"
-					width={264}
-					height={393}
-				></Image>
-				<Image
-					alt="card fly"
-					src="/black fly card.svg"
-					width={264}
-					height={393}
-				></Image>
+				<Box className="img-container">
+					<Image alt="card fly" src="/red fly card.svg" fill></Image>
+				</Box>
+				<Box className="img-container">
+					<Image alt="card fly" src="/black fly card.svg" fill></Image>
+				</Box>
 				<Typography sx={{ alignSelf: "center" }} variant="h1">
 					=
 				</Typography>
-				<Box>
+				<Box sx={{ maxWidth: "100%" }}>
 					{minted ? (
-						<Image
-							alt="card fly"
-							src="/fly gown.png"
-							width={410}
-							height={411}
-						></Image>
+						<Box className="img-container minted">
+							<Image alt="card fly" src="/fly gown.png" fill></Image>
+						</Box>
 					) : (
 						<Box
-							width={410}
+							className="img-container minted"
 							sx={{ backgroundColor: "grey" }}
-							height={411}
 						></Box>
 					)}
 					{minted ? (
 						<>
 							{" "}
-							<Typography fontWeight="bold" mt={3} variant="h6">
+							<Typography
+								sx={{ textAlign: { lg: "start", xs: "center" } }}
+								fontWeight="bold"
+								mt={3}
+								variant="h6"
+							>
 								You have revealed an artwork!
 							</Typography>
-							<Typography fontWeight="bold" variant="h6">
+							<Typography
+								sx={{ textAlign: { lg: "start", xs: "center" } }}
+								fontWeight="bold"
+								variant="h6"
+							>
 								Click <Link href="https://google.com"> here </Link> to view.
 							</Typography>
 						</>
@@ -63,15 +74,14 @@ export default function MintArtwork() {
 					)}
 				</Box>
 			</Stack>
-			{minted ? (
-				<Typography fontWeight="bold" variant="h6">
-					Burn success.
-				</Typography>
-			) : (
-				<Typography fontWeight="bold" variant="h6">
-					Click to select cards to burn
-				</Typography>
-			)}
+
+			<Typography
+				textAlign={{ lg: "start", xs: "center" }}
+				fontWeight="bold"
+				variant="h6"
+			>
+				{minted ? "Burn success" : "					Click to select cards to burn"}
+			</Typography>
 		</Box>
 	);
 }
@@ -81,8 +91,8 @@ export function MintArtWorkHeading() {
 			<Stack
 				sx={{
 					img: {
-						width: { xs: 40, md: 100 },
-						height: { xs: 40, md: 100 },
+						width: { xs: 40, lg: 100 },
+						height: { xs: 40, lg: 100 },
 					},
 					width: "max-content",
 				}}

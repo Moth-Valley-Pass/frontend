@@ -8,6 +8,7 @@ import FreeMint from "./components/FreeMint";
 import { useConnectWallet } from "@web3-onboard/react";
 import { useSetChain } from "@web3-onboard/react";
 import { NETWORK_ID, NETWORK_NAME } from "./CONSTANTS";
+import { useMint } from "./contexts/MintContext";
 
 export default function UILayer({ sx }: { sx?: SxProps }) {
 	const [seasonsOpen, setSeasonsOpen] = useState(false);
@@ -18,7 +19,12 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 			connectedChain, // the current chain the user's wallet is
 		},
 	] = useSetChain();
-	console.log(wallet);
+	const effect = 1;
+	const [{ contract }] = useMint();
+	useEffect(() => {
+		console.log(contract);
+		contract?.getStage().then((res) => console.log("Stage", res));
+	}, [effect, contract]);
 	return (
 		<Box sx={{ p: { xs: 2, md: 5 }, height: "100%", ...sx }}>
 			<Seasons open={seasonsOpen} onClose={() => setSeasonsOpen(false)} />

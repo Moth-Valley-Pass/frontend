@@ -12,6 +12,7 @@ import {
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import CloseBtn, { CloseBtnContainer } from "./CloseBtn";
+import { isWhitelisted } from "../utils/isWhitelisted";
 
 export default function FreeMint({
 	open,
@@ -146,7 +147,7 @@ function Eligibility() {
 				onSubmit={(e) => {
 					e.preventDefault();
 					setCheckedEligibility(true);
-					setEligible(Boolean(walletAddress));
+					setEligible(isWhitelisted(walletAddress));
 				}}
 			>
 				<TextField
@@ -177,7 +178,7 @@ function Eligibility() {
 				}}
 				onClick={() => {
 					setCheckedEligibility(true);
-					setEligible(Boolean(walletAddress));
+					setEligible(isWhitelisted(walletAddress));
 				}}
 			>
 				Check

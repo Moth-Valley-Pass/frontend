@@ -1,4 +1,4 @@
-import { Box, Dialog, Button, Stack, Typography } from "@mui/material";
+import { Box, Dialog, Button, Stack, Typography, Divider } from "@mui/material";
 import Image from "next/image";
 import React, { useState } from "react";
 import ClubsIcon from "@/src/assets/clubs.svg";
@@ -18,9 +18,9 @@ export default function Season1({
 		<Box>
 			<Stack
 				sx={{ flexDirection: { xs: "column-reverse", lg: "row" } }}
-				p={{ xs: 2, md: 5 }}
+				// p={{ xs: 2, md: 5 }}
 				alignItems={{ xs: "center", lg: "start" }}
-				gap={10}
+				gap={{ xs: 3, md: 10 }}
 			>
 				<Box
 					sx={{
@@ -28,6 +28,7 @@ export default function Season1({
 						// height: { xs: 400 / (611 / 509), xl: 509 },
 						aspectRatio: `${611 / 509}`,
 						maxWidth: "90%",
+						minWidth: "45%",
 						img: {},
 						position: "relative",
 					}}
@@ -41,14 +42,14 @@ export default function Season1({
 				</Box>
 				<Box>
 					<Typography
-						sx={{ fontSize: { xs: "25px", xl: "30px" } }}
+						sx={{ fontSize: { p: 0, xs: "25px", xl: "30px" } }}
 						variant="h5"
 					>
 						S1 focuses on highlighting emerging artists just entering the crypto
 						space. Game of Chance is a curation of artworks from talented
 						artists who deserves more attention.
 					</Typography>
-					<Stack mt={3} direction="row">
+					<Stack gap={1} mt={3} direction="row">
 						<Box sx={{ position: "relative", width: "50px" }}>
 							<Image
 								style={{
@@ -56,14 +57,16 @@ export default function Season1({
 									left: "-80px",
 									top: "10px",
 									objectFit: "contain",
+									zIndex: 2,
+									objectPosition: "top center",
 								}}
 								width={275}
-								height={234}
+								height={264}
 								alt="a of spades"
 								src="/fly path.svg"
 							></Image>
 						</Box>
-						<Typography sx={{ fontSize: "30px" }}>
+						<Typography sx={{ fontSize: { xs: "25px", md: "30px" } }}>
 							Scroll down to find out more.
 						</Typography>
 					</Stack>
@@ -84,45 +87,44 @@ export default function Season1({
 					</Button>
 				</Box>
 			</Stack>
-
+			<Divider
+				sx={{
+					my: 2,
+					display: { xs: "block", lg: "none" },
+					border: "2px solid black",
+				}}
+			></Divider>
 			<Stack
 				my={3}
 				justifyContent="space-between"
 				alignItems={"center"}
 				direction={{ xs: "column", md: "row" }}
-				gap={3}
+				gap={{ xs: 2, md: 3 }}
 				sx={{
-					img: {
+					".img-container": {
 						width: { xs: 175, lg: 237 },
 						aspectRatio: `${237 / 352}`,
+						maxWidth: "100%",
+						objectFit: "contain",
+						position: "relative",
 					},
-					"img.moth-man": {
+					".img-container.moth-man": {
 						width: { xs: 265, lg: 486 },
 						height: { xs: 265, lg: 486 },
 						// aspectRatio: `1`,
 					},
 				}}
 			>
-				<Image
-					src="/7 of spades.svg"
-					width={237}
-					height={352}
-					alt="card"
-				></Image>
-				<Image
-					src="/joker of hearts.svg"
-					width={237}
-					height={352}
-					alt="card"
-				></Image>
+				<Box className="img-container">
+					<Image src="/7 of spades.svg" fill alt="card"></Image>
+				</Box>
+				<Box className="img-container">
+					<Image src="/joker of hearts.svg" fill alt="card"></Image>
+				</Box>
 				<Typography variant="h1">=</Typography>
-				<Image
-					className="moth-man"
-					src="/moth man.jpg"
-					width={486}
-					height={486}
-					alt="card"
-				></Image>
+				<Box className="img-container moth-man">
+					<Image src="/moth man.jpg" fill alt="card"></Image>
+				</Box>
 			</Stack>
 			<Box sx={{ my: 3, "&>*": { my: 1 } }} mt={5}>
 				<Typography fontWeight="bold" variant="h4">
@@ -145,7 +147,7 @@ export default function Season1({
 					- Ignore the suits, only face value plays a role in the outcomes
 				</Typography>
 			</Box>
-			<Box my={2} sx={{ p: 2, border: "2px solid black" }}>
+			<Box my={2} sx={{ p: { xs: 1, md: 2 }, border: "2px solid black" }}>
 				{" "}
 				<Typography>For example: </Typography>
 				<Typography>
@@ -189,8 +191,8 @@ export function Season1Heading() {
 				<Box
 					sx={{
 						img: {
-							width: { xs: 40, md: 100 },
-							height: { xs: 40, md: 100 },
+							width: { xs: 40, lg: 100 },
+							height: { xs: 40, lg: 100 },
 						},
 					}}
 				>

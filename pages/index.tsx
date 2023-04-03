@@ -11,7 +11,7 @@ import Draggable from "react-draggable";
 import LayerStones from "@/src/Stones";
 import UILayer from "@/src/UILayer";
 import "@/src/initWallet";
-import MintProvider from "@/src/contexts/MintContext";
+import MintProvider, { useMint } from "@/src/contexts/MintContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
