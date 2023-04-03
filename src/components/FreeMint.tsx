@@ -195,29 +195,46 @@ function Mint() {
 		};
 	}, []);
 	return (
-		<Box>
-			<Stack justifyContent="center" gap={5} direction="row">
-				<Stack gap={3}>
-					{poapClaimed ? (
-						<Image
-							width={485}
-							height={485}
-							src="/monthly valley roadmap.png"
-							alt="mint card"
-						></Image>
-					) : (
-						<Image
-							width={485}
-							height={485}
-							src="/brown fly green bg card.png"
-							alt="mint card"
-						></Image>
-					)}
-					<Typography variant="h4" textAlign="center" fontWeight="bold">
-						{" "}
-						1 mint per wallet
-					</Typography>
-				</Stack>
+		<Stack
+			justifyContent="center"
+			alignItems="center"
+			gap={5}
+			direction={{ xs: "column", lg: "row" }}
+		>
+			<Stack gap={3} alignItems={{ md: "start", xs: "center" }}>
+				<Box
+					sx={{
+						position: "relative",
+						width: { md: 300, lg: 485 },
+						maxWidth: "100%",
+						alignSelf: "stretch",
+
+						aspectRatio: "1",
+					}}
+				>
+					<Image
+						fill
+						src={
+							poapClaimed
+								? "/monthly valley roadmap.png"
+								: "/brown fly green bg card.png"
+						}
+						alt="mint card"
+					></Image>
+				</Box>
+				<Typography variant="h4" textAlign="center" fontWeight="bold">
+					{" "}
+					1 mint per wallet
+				</Typography>
+			</Stack>
+			<Box
+				sx={{
+					h4: {
+						fontSize: { xs: "25px", md: "2.125rem" },
+						textAlign: { xs: "center", md: "start" },
+					},
+				}}
+			>
 				{poapClaimed ? (
 					<Stack
 						justifyContent="center"
@@ -241,9 +258,11 @@ function Mint() {
 						<Button
 							sx={{
 								alignSelf: "center",
-								fontSize: "40px",
-								width: "482px",
-								height: "82px",
+								fontSize: { xs: "25px", md: "40px" },
+								px: { md: 13, xs: 3 },
+
+								// width: "482px",
+								// height: "82px",
 							}}
 							onClick={() => setPoapClaimed(true)}
 						>
@@ -251,7 +270,7 @@ function Mint() {
 						</Button>
 					</Stack>
 				)}
-			</Stack>
-		</Box>
+			</Box>
+		</Stack>
 	);
 }
