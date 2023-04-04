@@ -37,10 +37,9 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 							sx={{
 								fontWeight: "bold",
 								fontSize: { xs: "35px", md: "64px" },
-								textTransform: "uppercase",
 							}}
 						>
-							APRIL 30th
+							April 30th
 						</Typography>
 						<Stack gap={3} direction="row">
 							<Link href="https://twitter.com/moth_valley">
