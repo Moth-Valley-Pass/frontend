@@ -23,6 +23,8 @@ export function CloseBtnContainer({ sx, children, ...props }: BoxProps) {
 		<Box
 			sx={{
 				position: "absolute",
+				backgroundColor: "#f5f5f5",
+				// borderRadius: "50%",
 				top: { xs: 20, md: 40 },
 				right: { xs: 20, md: 40 },
 				...sx,

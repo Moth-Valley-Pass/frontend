@@ -47,7 +47,7 @@ export default function FreeMint({
 						}}
 					></CloseBtn>
 				</CloseBtnContainer>
-				<Box sx={{ overflow: "auto" }}>
+				<Box sx={{ overflow: "auto", pr: 8 }}>
 					<Stack
 						alignItems="center"
 						direction="row"

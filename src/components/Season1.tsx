@@ -95,7 +95,7 @@ export default function Season1({
 				}}
 			></Divider>
 			<Stack
-				my={3}
+				my={{ xs: 4, md: 8 }}
 				justifyContent="space-between"
 				alignItems={"center"}
 				direction={{ xs: "column", md: "row" }}
@@ -110,20 +110,31 @@ export default function Season1({
 					},
 					".img-container.moth-man": {
 						width: { xs: 265, lg: 486 },
-						height: { xs: 265, lg: 486 },
 						// aspectRatio: `1`,
 					},
 				}}
 			>
-				<Box className="img-container">
-					<Image src="/7 of spades.svg" fill alt="card"></Image>
-				</Box>
-				<Box className="img-container">
-					<Image src="/joker of hearts.svg" fill alt="card"></Image>
-				</Box>
+				<Stack
+					justifyContent="space-between"
+					gap={{ xs: 2, sm: 6, md: 9, lg: 12, xl: 15 }}
+					sx={{ flexShrink: "0", felxGrow: "1", maxWidth: "100%" }}
+					direction="row"
+				>
+					<Box className="img-container">
+						<Image src="/7 of spades.svg" fill alt="card"></Image>
+					</Box>
+					<Box className="img-container">
+						<Image src="/joker of hearts.svg" fill alt="card"></Image>
+					</Box>
+				</Stack>
 				<Typography variant="h1">=</Typography>
 				<Box className="img-container moth-man">
-					<Image src="/moth man.jpg" fill alt="card"></Image>
+					<Image
+						style={{ objectFit: "cover" }}
+						src="/moth man.jpg"
+						fill
+						alt="card"
+					></Image>
 				</Box>
 			</Stack>
 			<Box sx={{ my: 3, "&>*": { my: 1 } }} mt={5}>
@@ -182,7 +193,7 @@ export default function Season1({
 
 export function Season1Heading() {
 	return (
-		<Box sx={{ overflow: "auto" }}>
+		<Box sx={{ overflow: "auto", pr: 8 }}>
 			<Stack
 				alignItems="center"
 				sx={{ width: "max-content" }}
