@@ -185,7 +185,8 @@ export function Season1Heading() {
 		<Box sx={{ overflow: "auto" }}>
 			<Stack
 				alignItems="center"
-				gap={{ width: "max-content", xs: 2, md: 5 }}
+				sx={{ width: "max-content" }}
+				gap={{ xs: 2, md: 5 }}
 				direction="row"
 			>
 				<Box

@@ -62,23 +62,42 @@ function MothValley({ sx }: { sx?: SxProps }) {
 				...sx,
 			}}
 		>
-			<Typography
-				textAlign="center"
-				fontWeight={"800"}
-				fontFamily="'Hepta Slab', serif"
-				variant="h1"
-				sx={{
-					fontSize: {
-						xs: "50px !important",
-						sm: "80px !important",
-						md: "150px !important",
-						lg: "220px !important",
-					},
-					textTransform: "uppercase",
-				}}
-			>
-				Moth <br /> Valley
-			</Typography>
+			<Box sx={{ "&>*": { lineHeight: "0.92" } }}>
+				<Typography
+					textAlign="center"
+					fontWeight={"800"}
+					fontFamily="'Hepta Slab', serif"
+					variant="h1"
+					sx={{
+						fontSize: {
+							xs: "50px !important",
+							sm: "80px !important",
+							md: "150px !important",
+							lg: "220px !important",
+						},
+						textTransform: "uppercase",
+					}}
+				>
+					Moth
+				</Typography>
+				<Typography
+					textAlign="center"
+					fontWeight={"800"}
+					fontFamily="'Hepta Slab', serif"
+					variant="h1"
+					sx={{
+						fontSize: {
+							xs: "50px !important",
+							sm: "80px !important",
+							md: "150px !important",
+							lg: "220px !important",
+						},
+						textTransform: "uppercase",
+					}}
+				>
+					Valley
+				</Typography>
+			</Box>
 		</Box>
 	);
 }

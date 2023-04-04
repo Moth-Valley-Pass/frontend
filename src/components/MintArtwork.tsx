@@ -194,7 +194,7 @@ export default function MintArtwork() {
 			>
 				{minted ? "Burn success" : "					Click to select cards to burn"}
 			</Typography>
-			<MintStatus />
+			{wallet && <MintStatus />}
 		</Box>
 	);
 }

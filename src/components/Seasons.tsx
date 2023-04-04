@@ -30,7 +30,7 @@ export default function Seasons({
 					height: { md: "min(90vh, 900px)" },
 					position: "relative",
 				}}
-				py={{ xs: 5, md: 5 }}
+				py={{ xs: 2, md: 2 }}
 				px={{ xs: 2, md: 5 }}
 			>
 				<CloseBtnContainer>

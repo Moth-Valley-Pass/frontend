@@ -27,9 +27,9 @@ export default function FreeMint({
 	return (
 		<Dialog maxWidth={false} open={open} onClose={onClose}>
 			<Box
-				sx={{ width: "min(1495px, 100%)", mx: "auto", height: { md: "850px" } }}
+				sx={{ width: "min(1495px, 100%)", mx: "auto" }}
 				px={{ xs: 3, md: 15 }}
-				py={5}
+				py={{ xs: 2, md: 3 }}
 			>
 				<CloseBtnContainer>
 					<CloseBtn
@@ -47,21 +47,28 @@ export default function FreeMint({
 						}}
 					></CloseBtn>
 				</CloseBtnContainer>
-
-				<Box sx={{ maxWidth: "90%", width: "max-content", overflow: "auto" }}>
-					<Typography
+				<Box sx={{ overflow: "auto" }}>
+					<Stack
+						alignItems="center"
+						direction="row"
 						sx={{
-							whiteSpace: "nowrap",
-							// overflow: "auto",
-							fontSize: { xs: "30px", md: "3rem" },
+							width: "max-content",
+							overflowY: "hidden",
 						}}
-						fontWeight={"bold"}
-						variant="h3"
 					>
-						Mint a Moth Valley Pass
-					</Typography>
+						<Typography
+							sx={{
+								// whiteSpace: "nowrap",
+								fontSize: { xs: "30px", md: "3rem" },
+							}}
+							fontWeight={"bold"}
+							variant="h3"
+						>
+							Mint a Moth Valley Pass
+						</Typography>
+					</Stack>
 				</Box>
-				<Divider sx={{ border: "2px solid black", my: 5 }}></Divider>
+				<Divider sx={{ border: "2px solid black", my: 4 }}></Divider>
 				{checkingEligibility ? (
 					<Eligibility></Eligibility>
 				) : showMint ? (
@@ -69,13 +76,13 @@ export default function FreeMint({
 				) : (
 					<Stack
 						justifyContent="center"
-						gap={10}
+						gap={7}
 						direction={{ xs: "column", lg: "row" }}
 					>
 						<Stack sx={{ img: {} }} gap={4} alignItems="center">
 							<Box
 								sx={{
-									width: { xs: 300, lg: 485 },
+									width: { xs: 280, lg: 445 },
 									aspectRatio: "1",
 									position: "relative",
 									maxWidth: "100%",
