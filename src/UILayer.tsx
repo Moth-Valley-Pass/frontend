@@ -20,11 +20,8 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 		},
 	] = useSetChain();
 	const effect = 1;
-	const [{ contract }] = useMint();
-	// useEffect(() => {
-	// 	console.log(contract);
-	// 	contract?.getStage().then((res) => console.log("Stage", res));
-	// }, [effect, contract]);
+	const [{ contract, stage }] = useMint();
+
 	return (
 		<Box sx={{ p: { xs: 2, md: 5 }, height: "100%", ...sx }}>
 			<Seasons open={seasonsOpen} onClose={() => setSeasonsOpen(false)} />
@@ -35,6 +32,9 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 					justifyContent="space-between"
 					alignItems="start"
 				>
+					<Box sx={{ p: 5, backgroundColor: "white" }}>
+						<Typography>Stage:{stage}</Typography>
+					</Box>
 					<Box>
 						<Typography
 							sx={{
@@ -75,7 +75,6 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 							</Link>
 						</Stack>
 					</Box>
-
 					<Box>
 						<Button
 							onClick={() => (wallet ? disconnect(wallet) : connect())}

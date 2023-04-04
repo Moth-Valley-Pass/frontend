@@ -11,12 +11,13 @@ import {
 import { ABI } from "../data/abi";
 import { Web3OnboardProvider, useConnectWallet } from "@web3-onboard/react";
 import { whitelist } from "../data/whitelist";
+import Loader from "../components/Loader";
 
 const initialState = {
 	whitelist: whitelist,
 	totalMinted: 0,
 	amount: 1,
-	stage: null as null | number,
+	stage: null as null | 0 | 1 | 2 | 999,
 
 	balanceOf: null,
 	dialogConfirmation: false,
@@ -24,14 +25,14 @@ const initialState = {
 	contract: null as null | ethers.Contract,
 	account: null as string | null,
 	contractAddress: CONTRACT_ADDR,
-	txHash: "",
+	txHash: null as null | string,
 	ethers: null as null | ethers.BrowserProvider,
 	signer: null as null | JsonRpcSigner,
 	provider: "not_web3",
 	isLoading: false,
 	loadingText: "loading...",
 	boxError: false,
-	errorText: "",
+	errorText: null as null | string,
 	dialogAdoptMany: false,
 	dialogError: false,
 	walletAddress: null,
@@ -55,6 +56,7 @@ export default function MintProvider({ children }: { children: any }) {
 	let mintData: typeof initialState;
 
 	[mintData, setMintData] = useState(initialState);
+	const { contract } = mintData;
 	const [{ wallet }] = useConnectWallet();
 
 	useEffect(() => {
@@ -67,7 +69,31 @@ export default function MintProvider({ children }: { children: any }) {
 		setMintData((s) => ({ ...s, ethers: stateEthers, contract }));
 	}, [wallet, wallet?.provider]);
 
+	useEffect(() => {
+		// console.log(contract);
+		contract?.getStage().then((res) => {
+			setMintData((d) => ({ ...d, stage: Number(res) as typeof d.stage }));
+		});
+	}, [contract]);
+	useEffect(() => {
+		// console.log(contract);
+		if (!wallet) {
+			setMintData((d) => ({
+				...d,
+				errorText: "",
+				isLoading: false,
+				loadingText: "",
+				txHash: null,
+				ethers: null,
+				contract: null,
+			}));
+		}
+	}, [wallet]);
+
 	return (
-		<MintContext.Provider value={mintData}>{children}</MintContext.Provider>
+		<MintContext.Provider value={mintData}>
+			{children}
+			{mintData.isLoading && <Loader />}
+		</MintContext.Provider>
 	);
 }

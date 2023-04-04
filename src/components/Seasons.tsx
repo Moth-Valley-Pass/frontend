@@ -21,7 +21,6 @@ export default function Seasons({
 }) {
 	const [season1Open, setSeason1Open] = useState(false);
 	const [mintArtworkOpen, setMintArtworkOpen] = useState(false);
-
 	return (
 		<Dialog maxWidth={false} open={open} onClose={onClose}>
 			<Box

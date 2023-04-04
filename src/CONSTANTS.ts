@@ -15,7 +15,8 @@ export const OWNER_EMAIL = "email@email.com";
 // export const EXPLORER_URI = "https://evm.explorer.canto.io";
 
 //AVAX TESTNET
-export const CONTRACT_ADDR = "0x5a22323A65CA245478cC6fff3e0035E242036310";
+// export const CONTRACT_ADDR = "0x5a22323A65CA245478cC6fff3e0035E242036310";
+export const CONTRACT_ADDR = "0xEF3846d3E91c643AFd3801712D04272930a27894";
 export const NETWORK_NAME = "AVAX TESTNET";
 export const NETWORK_ID = 43113;
 export const RPC_PROVIDER = "https://api.avax-test.network/ext/bc/C/rpc";

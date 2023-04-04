@@ -8,6 +8,7 @@ import {
 	Typography,
 	IconButton,
 	TextField,
+	Alert,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
@@ -138,6 +139,8 @@ function Eligibility() {
 	// const eligible = Boolean(walletAddress);
 	return (
 		<Box>
+			<Alert severity="error">Whitelist not implemented yet</Alert>
+
 			<Box
 				sx={{
 					"&>*": { fontSize: { xs: "25px !important", md: "3rem !important" } },
