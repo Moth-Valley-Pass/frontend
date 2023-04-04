@@ -150,6 +150,23 @@ export default function MintArtwork() {
 							sx={{ backgroundColor: "grey" }}
 						></Box>
 					)}
+				</Box>
+			</Stack>
+			<Stack
+				alignItems={"center"}
+				justifyContent="space-between"
+				gap={2}
+				direction={{ lg: "row" }}
+			>
+				<Typography
+					textAlign={{ lg: "start", xs: "center" }}
+					sx={{ mt: 2 }}
+					fontWeight="bold"
+					variant="h6"
+				>
+					{minted ? "Burn success" : "					Click to select cards to burn"}
+				</Typography>
+				<Box>
 					{minted ? (
 						<>
 							{" "}
@@ -171,7 +188,7 @@ export default function MintArtwork() {
 						</>
 					) : (
 						<Button
-							sx={{ fontSize: "20px", my: 2, width: "100%" }}
+							sx={{ fontSize: "20px", my: 2, width: "410px" }}
 							onClick={() => {
 								if (wallet) {
 									publicClaim();
@@ -187,13 +204,7 @@ export default function MintArtwork() {
 					)}
 				</Box>
 			</Stack>
-			<Typography
-				textAlign={{ lg: "start", xs: "center" }}
-				fontWeight="bold"
-				variant="h6"
-			>
-				{minted ? "Burn success" : "					Click to select cards to burn"}
-			</Typography>
+
 			{wallet && <MintStatus />}
 		</Box>
 	);
