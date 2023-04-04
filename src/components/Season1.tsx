@@ -110,7 +110,7 @@ export default function Season1({
 					},
 					".img-container.moth-man": {
 						width: { xs: 265, lg: 486 },
-						// aspectRatio: `1`,
+						aspectRatio: `1`,
 					},
 				}}
 			>
