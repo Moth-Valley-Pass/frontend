@@ -70,8 +70,8 @@ function MothValley({ sx }: { sx?: SxProps }) {
 					variant="h1"
 					sx={{
 						fontSize: {
-							xs: "50px !important",
-							sm: "80px !important",
+							xs: "18vw !important",
+							sm: "120px !important",
 							md: "150px !important",
 							lg: "220px !important",
 						},
@@ -87,8 +87,8 @@ function MothValley({ sx }: { sx?: SxProps }) {
 					variant="h1"
 					sx={{
 						fontSize: {
-							xs: "50px !important",
-							sm: "80px !important",
+							xs: "18vw !important",
+							sm: "120px !important",
 							md: "150px !important",
 							lg: "220px !important",
 						},

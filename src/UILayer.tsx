@@ -71,6 +71,17 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 								></Image>
 							</Link>
 						</Stack>
+						<Button
+							onClick={() => (wallet ? disconnect(wallet) : connect())}
+							sx={{
+								fontSize: { xs: "20px", md: "33px" },
+								px: { xs: 1, md: 2 },
+								mt: 3,
+								display: { xs: "block", md: "none" },
+							}}
+						>
+							{wallet ? "Disconnect" : "Connect Wallet"}
+						</Button>
 					</Box>
 					<Box>
 						<Button
@@ -83,7 +94,7 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 						>
 							{wallet ? "Disconnect" : "Connect Wallet"}
 						</Button>
-						{connectedChain && Number(connectedChain.id) !== NETWORK_ID && (
+						{/* {connectedChain && Number(connectedChain.id) !== NETWORK_ID && (
 							<Alert
 								sx={{ my: 2, alignSelf: "center", mx: "atuo", width: "90%" }}
 								color="error"
@@ -91,23 +102,11 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 								Warning! Not connected to the&nbsp;
 								{NETWORK_NAME} network!
 							</Alert>
-						)}
+						)} */}
 					</Box>
 				</Stack>
 
 				<Box>
-					<Button
-						onClick={() => (wallet ? disconnect(wallet) : connect())}
-						sx={{
-							fontSize: { xs: "20px", md: "33px" },
-							px: { xs: 1, md: 2 },
-							mb: 3,
-							display: { xs: "block", md: "none" },
-						}}
-					>
-						{wallet ? "Disconnect" : "Connect Wallet"}
-					</Button>
-
 					<Stack
 						sx={{
 							button: {
