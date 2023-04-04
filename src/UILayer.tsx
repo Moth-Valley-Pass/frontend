@@ -32,9 +32,6 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 					justifyContent="space-between"
 					alignItems="start"
 				>
-					<Box sx={{ p: 5, backgroundColor: "white" }}>
-						<Typography>Stage:{stage}</Typography>
-					</Box>
 					<Box>
 						<Typography
 							sx={{

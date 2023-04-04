@@ -6,8 +6,8 @@ export default function CloseBtn({ sx, ...props }: IconButtonProps) {
 		<IconButton
 			sx={{
 				img: {
-					width: { md: 50, xs: 25 },
-					height: { md: 50, xs: 25 },
+					width: { md: 40, xs: 20 },
+					height: { md: 40, xs: 20 },
 				},
 				...sx,
 			}}
@@ -23,8 +23,8 @@ export function CloseBtnContainer({ sx, children, ...props }: BoxProps) {
 		<Box
 			sx={{
 				position: "absolute",
-				top: { xs: 25, md: 50 },
-				right: { xs: 25, md: 50 },
+				top: { xs: 20, md: 40 },
+				right: { xs: 20, md: 40 },
 				...sx,
 			}}
 			{...props}
