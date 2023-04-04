@@ -112,7 +112,7 @@ export default function FreeMint({
 							alignItems="center"
 							sx={{ "&>*": { maxWidth: "100%" } }}
 						>
-							<Button
+							{/* <Button
 								size="large"
 								sx={{
 									fontSize: { xs: 30, md: "50px" },
@@ -122,7 +122,7 @@ export default function FreeMint({
 								onClick={() => setShowMint(true)}
 							>
 								Mint
-							</Button>
+							</Button> */}
 							<Button
 								size="large"
 								sx={{
