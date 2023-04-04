@@ -36,13 +36,16 @@ export default function Seasons({
 				<CloseBtnContainer>
 					<CloseBtn
 						onClick={() => {
-							if (mintArtworkOpen) {
-								setMintArtworkOpen(false);
-							} else if (season1Open) {
-								setSeason1Open(false);
-							} else {
-								onClose();
-							}
+							// if (mintArtworkOpen) {
+							// 	setMintArtworkOpen(false);
+							// } else if (season1Open) {
+							// 	setSeason1Open(false);
+							// } else {
+							// 	onClose();
+							// }
+							onClose();
+							setMintArtworkOpen(false);
+							setSeason1Open(false);
 						}}
 					></CloseBtn>
 				</CloseBtnContainer>

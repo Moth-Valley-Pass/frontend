@@ -34,13 +34,16 @@ export default function FreeMint({
 				<CloseBtnContainer>
 					<CloseBtn
 						onClick={() => {
-							if (checkingEligibility) {
-								setCheckingEligibility(false);
-							} else if (showMint) {
-								setShowMint(false);
-							} else {
-								onClose();
-							}
+							// if (checkingEligibility) {
+							// 	setCheckingEligibility(false);
+							// } else if (showMint) {
+							// 	setShowMint(false);
+							// } else {
+							// 	onClose();
+							// }
+							onClose();
+							setCheckingEligibility(false);
+							setShowMint(false);
 						}}
 					></CloseBtn>
 				</CloseBtnContainer>
