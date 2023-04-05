@@ -116,6 +116,9 @@ export default function Season1({
 						maxWidth: "100%",
 						objectFit: "contain",
 						position: "relative",
+						// ":has(:not(.moth-man))": {
+						// 	maxWidth: "50%",
+						// },
 					},
 					".img-container.moth-man": {
 						width: { xs: 265, lg: 486 },
@@ -125,8 +128,13 @@ export default function Season1({
 			>
 				<Stack
 					justifyContent="space-between"
-					gap={{ xs: 2, sm: 6, md: 9, lg: 12, xl: 15 }}
-					sx={{ flexShrink: "0", felxGrow: "1", maxWidth: "100%" }}
+					gap={{ xs: 1, sm: 6, md: 9, lg: 12, xl: 15 }}
+					sx={{
+						"&>*": { maxWidth: "40%" },
+						flexShrink: "0",
+						felxGrow: "1",
+						maxWidth: "100%",
+					}}
 					direction="row"
 				>
 					<Stack gap={1} alignItems="center">
@@ -139,7 +147,7 @@ export default function Season1({
 									width: { md: "72px !important", xs: "40px !important" },
 								},
 							}}
-							gap={2}
+							gap={{ xs: 0, md: 2 }}
 							alignItems="center"
 							flexDirection="row"
 						>
@@ -162,7 +170,7 @@ export default function Season1({
 							<Image src="/joker of hearts.svg" fill alt="card"></Image>
 						</Box>
 						<Stack
-							gap={{ xs: 1, md: 2 }}
+							gap={{ xs: 0, md: 2 }}
 							alignItems="center"
 							sx={{
 								img: {
