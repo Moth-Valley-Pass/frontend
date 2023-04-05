@@ -245,9 +245,7 @@ const images: IImage[] = [
 		className: "scale-down-0-8",
 	},
 ];
-// images.forEach((img) => {
-// 	delete img.className;
-// });
+//
 /** Moths, flowers, and other big objects */
 export default function BugsLargest({ sx }: { sx?: SxProps }) {
 	const ref = useUndraggable();
@@ -367,55 +365,83 @@ const imagesResponsive: {
 	className?: string;
 }[] = [
 	{
-		width: 810,
-		height: 810,
+		width: 380,
+		height: 380,
 		style: {
 			rotate: "-7deg",
 			zIndex: 2,
 			objectFit: "contain",
-			bottom: 0,
-			width: "400px",
-			height: "400px",
-			right: 0,
+			bottom: 180,
+
+			right: -50,
 			translate: "25% 25%",
 		},
 		src: "/big fire moth.png",
 		className: "tilted-rotation big-fire-moth",
 	},
 	{
-		width: 639,
-		height: 639,
+		width: 380,
+		height: 380,
 		style: {
-			transform: "translateX(-35%) translateY(15%)",
-			left: 0,
-			bottom: 0,
+			rotate: "-7deg",
+			zIndex: 2,
 			objectFit: "contain",
+			bottom: 180,
+
+			right: -50,
+			translate: "25% 25%",
 		},
-		// className: "translate-bottom-left",
-		src: "/crooked tree.png",
+		src: "/big fire moth.png",
+		className: "tilted-rotation big-fire-moth",
 	},
 	{
-		width: 100,
-		height: 100,
+		width: 339,
+		height: 339,
 		style: {
-			top: "calc(50% - 50px)",
-			left: "calc(50% - 50px)",
-			transform: "translateY(-50%) translateX(-50%)",
+			// transform: "translateX(-35%) translateY(15%)",
+			top: -180,
+			right: 0,
+			rotate: "150deg",
+			objectFit: "contain",
+		},
+		className: "translate-bottom-left",
+		src: "/colorful fly.png",
+	},
+	{
+		width: 130,
+		height: 130,
+		style: {
+			bottom: 25,
+			right: 10,
+			zIndex: 2,
+			// transform: "translateY(-50%) translateX(-50%)",
 			objectFit: "contain",
 		},
 		src: "/dark colorful flowerish.png",
 		className: "scale-down-0-8",
 	},
 	{
-		width: 255,
-		height: 255,
+		width: 315,
+		height: 315,
 		style: {
-			top: 17.46000000000001,
-			right: 0,
-			rotate: "-10deg",
+			top: 57.46000000000001,
+			left: -100,
+			rotate: "15deg",
 			objectFit: "contain",
 		},
-		src: "/very normal moth.png",
+		src: "/greenish moth.png",
+		className: "scale-down-translate-top-right",
+	},
+	{
+		width: 131,
+		height: 131,
+		style: {
+			bottom: 177,
+			left: 10,
+			rotate: "50deg",
+			objectFit: "contain",
+		},
+		src: "/shiny pumpkin.png",
 		className: "scale-down-translate-top-right",
 	},
 ];

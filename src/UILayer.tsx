@@ -32,7 +32,19 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 					justifyContent="space-between"
 					alignItems="start"
 				>
-					<Box>
+					<Box sx={{ width: { xs: "100%", md: "auto" } }}>
+						<Button
+							onClick={() => (wallet ? disconnect(wallet) : connect())}
+							sx={{
+								fontSize: { xs: "28px", md: "33px" },
+								px: { xs: 1, md: 2 },
+								mb: 1,
+								width: "100%",
+								display: { xs: "block", md: "none" },
+							}}
+						>
+							{wallet ? "Disconnect" : "Connect Wallet"}
+						</Button>
 						<Typography
 							sx={{
 								fontWeight: "bold",
@@ -70,17 +82,6 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 								></Image>
 							</Link>
 						</Stack>
-						<Button
-							onClick={() => (wallet ? disconnect(wallet) : connect())}
-							sx={{
-								fontSize: { xs: "20px", md: "33px" },
-								px: { xs: 1, md: 2 },
-								mt: 3,
-								display: { xs: "block", md: "none" },
-							}}
-						>
-							{wallet ? "Disconnect" : "Connect Wallet"}
-						</Button>
 					</Box>
 					<Box>
 						<Button
@@ -109,11 +110,12 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 					<Stack
 						sx={{
 							button: {
-								fontSize: { xs: "20px", md: "33px" },
-								px: { md: 2, xs: 1 },
+								fontSize: { xs: "28px", md: "33px" },
+								px: { md: 5, xs: 5 },
+								py: { xs: 0 },
 							},
 						}}
-						gap={{ xs: 0.5, md: 2 }}
+						gap={{ xs: 1, md: 2 }}
 						alignItems="start"
 					>
 						<Link
