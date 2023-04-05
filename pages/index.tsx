@@ -21,7 +21,7 @@ const imagesBehindMothValley = [
 ];
 
 const imagesInMobileInFrontOfUI = [
-	"/shiny pumpkin.png",
+	// "/shiny pumpkin.png",
 	"/big fire moth.png",
 	"/hibiscus.png",
 ];
@@ -132,7 +132,7 @@ export default function Home() {
 					<BugsAndImages
 						sx={{
 							display: { xs: "block", lg: "none" },
-							zIndex: 4,
+							zIndex: 1,
 							opacity: 1,
 							position: "absolute",
 							inset: "0",

@@ -5,7 +5,7 @@ import ClubsIcon from "@/src/assets/clubs.svg";
 import DaimondIcon from "@/src/assets/daimond.svg";
 import HeartsIcon from "@/src/assets/heartsvg.svg";
 import SpadeIcon from "@/src/assets/spade.svg";
-
+import FireIcon from "@/src/assets/fire.svg";
 function MintButton() {}
 
 export default function Season1({
@@ -50,7 +50,13 @@ export default function Season1({
 						artists who deserves more attention.
 					</Typography>
 					<Stack gap={1} mt={3} direction="row">
-						<Box sx={{ position: "relative", width: "50px" }}>
+						<Box
+							sx={{
+								display: { xs: "none", md: "block" },
+								position: "relative",
+								width: "50px",
+							}}
+						>
 							<Image
 								style={{
 									position: "absolute",
@@ -73,9 +79,10 @@ export default function Season1({
 
 					<Button
 						sx={{
-							px: { md: 5, xl: 15 },
+							px: { xs: 10, md: 10, xl: 15 },
 							// width: 333,
 							// height: 94,
+							maxWidth: "100%",
 							display: "block",
 							mx: "auto",
 							mt: { xs: 4, md: 10 },
@@ -120,12 +127,62 @@ export default function Season1({
 					sx={{ flexShrink: "0", felxGrow: "1", maxWidth: "100%" }}
 					direction="row"
 				>
-					<Box className="img-container">
-						<Image src="/7 of spades.svg" fill alt="card"></Image>
-					</Box>
-					<Box className="img-container">
-						<Image src="/joker of hearts.svg" fill alt="card"></Image>
-					</Box>
+					<Stack gap={1} alignItems="center">
+						<Box className="img-container">
+							<Image src="/7 of spades.svg" fill alt="card"></Image>
+						</Box>
+						<Stack
+							sx={{
+								img: {
+									width: { md: "72px !important", xs: "40px !important" },
+								},
+							}}
+							gap={2}
+							alignItems="center"
+							flexDirection="row"
+						>
+							<Image
+								width={72}
+								height={72}
+								alt="Fire icon"
+								src={FireIcon}
+							></Image>
+							<Typography
+								sx={{ fontSize: { md: "2.215rem", xs: "25px" } }}
+								variant="h4"
+							>
+								Burn
+							</Typography>
+						</Stack>
+					</Stack>
+					<Stack gap={1} alignItems="center">
+						<Box className="img-container">
+							<Image src="/joker of hearts.svg" fill alt="card"></Image>
+						</Box>
+						<Stack
+							gap={{ xs: 1, md: 2 }}
+							alignItems="center"
+							sx={{
+								img: {
+									width: { md: "72px !important", xs: "40px !important" },
+								},
+							}}
+							flexDirection="row"
+						>
+							<Image
+								width={72}
+								height={72}
+								alt="Fire icon"
+								src={FireIcon}
+							></Image>
+							<Typography
+								sx={{ fontSize: { md: "2.215rem", xs: "25px" } }}
+								variant="h4"
+							>
+								Burn
+							</Typography>
+						</Stack>
+					</Stack>
 				</Stack>
 				<Typography variant="h1">=</Typography>
 				<Box className="img-container moth-man">
