@@ -139,7 +139,7 @@ export default function useContractFunctions() {
 
 			//WHITELIST
 			const { whitelist } = mintData;
-			let selectedCandidate: null | typeof whitelist[0];
+			let selectedCandidate: null | typeof whitelist[0] = null;
 			for (let i = 0; i < whitelist.length; i++) {
 				if (
 					String(whitelist[i]["Address"]).toLowerCase() ===
