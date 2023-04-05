@@ -110,9 +110,9 @@ export default function Home() {
 							inset: "0",
 						}}
 					></LayerStones>
-					{/* <UILayer
+					<UILayer
 						sx={{ zIndex: 5, position: "absolute", inset: "0" }}
-					></UILayer> */}
+					></UILayer>
 				</MintProvider>
 			</Box>
 		</>
