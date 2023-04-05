@@ -243,7 +243,7 @@ export default function Season1({
 			>
 				Mint
 			</Button>
-			<Box sx={{ height: "2px" }}></Box>
+			<Box sx={{ height: "22px" }}></Box>
 		</Box>
 	);
 }

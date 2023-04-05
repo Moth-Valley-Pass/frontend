@@ -77,17 +77,18 @@ export default function MintProvider({ children }: { children: any }) {
 	}, [contract]);
 	useEffect(() => {
 		// console.log(contract);
-		if (!wallet) {
-			setMintData((d) => ({
-				...d,
-				errorText: "",
-				isLoading: false,
-				loadingText: "",
-				txHash: null,
-				ethers: null,
-				contract: null,
-			}));
-		}
+		// if (!wallet) {
+		setMintData((d) => ({
+			...d,
+			errorText: "",
+			isLoading: false,
+			loadingText: "",
+			txHash: null,
+			ethers: null,
+			boxError: false,
+			contract: null,
+		}));
+		// }
 	}, [wallet]);
 
 	return (
