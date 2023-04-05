@@ -1,6 +1,7 @@
 import React from "react";
 import { useMint } from "../contexts/MintContext";
-import { Box, Alert, Typography, Stack } from "@mui/material";
+import { Link, Box, Alert, Typography, Stack } from "@mui/material";
+import { EXPLORER_URI } from "../CONSTANTS";
 
 export default function MintStatus() {
 	const [mintData] = useMint();
@@ -45,7 +46,13 @@ export default function MintStatus() {
 					<Alert severity="info">{mintData.loadingText}</Alert>
 				)}
 				{mintData.txHash && (
-					<Alert severity="info">Transaction Hash: {mintData.txHash}</Alert>
+					<Alert severity="info">
+						Transaction Hash:{" "}
+						<Link href={`${EXPLORER_URI}/tx/${mintData.txHash}`}>
+							{" "}
+							{mintData.txHash}
+						</Link>
+					</Alert>
 				)}
 			</Stack>
 			<Box sx={{ my: 2, height: "20px" }}>{""}</Box>
