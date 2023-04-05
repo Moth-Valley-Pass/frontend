@@ -263,7 +263,12 @@ function EligibilityMint() {
 				onClick={() => {
 					// setCheckedEligibility(true);
 					// setEligible(isWhitelisted(walletAddress));
-					wallet ? mintNft() : connect();
+					if (!wallet) {
+						connect();
+						styleWeb3Account();
+					} else {
+						mintNft();
+					}
 				}}
 			>
 				{wallet ? "Mint" : "Connect wallet"}
