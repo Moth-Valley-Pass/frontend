@@ -17,6 +17,7 @@ import { isWhitelisted } from "../utils/isWhitelisted";
 import { useConnectWallet } from "@web3-onboard/react";
 import useContractFunctions from "../hooks/useContractFunctions";
 import MintStatus from "./MintStatus";
+import styleWeb3Account from "../utils/styleWeb3";
 
 export default function FreeMint({
 	open,
