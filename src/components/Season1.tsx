@@ -80,6 +80,8 @@ export default function Season1({
 					<Button
 						sx={{
 							px: { xs: 10, md: 10, xl: 15 },
+							width: { xs: "100%", md: "revert" },
+
 							// width: 333,
 							// height: 94,
 							maxWidth: "100%",
@@ -234,6 +236,7 @@ export default function Season1({
 					px: { md: 5, xl: 15 },
 					// width: 333,
 					// height: 94,
+					width: { xs: "100%", md: "revert" },
 					display: "block",
 					mx: "auto",
 					mt: { xs: 4, md: 10 },
