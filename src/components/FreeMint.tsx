@@ -14,6 +14,9 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import CloseBtn, { CloseBtnContainer } from "./CloseBtn";
 import { isWhitelisted } from "../utils/isWhitelisted";
+import { useConnectWallet } from "@web3-onboard/react";
+import useContractFunctions from "../hooks/useContractFunctions";
+import MintStatus from "./MintStatus";
 
 export default function FreeMint({
 	open,
@@ -70,7 +73,7 @@ export default function FreeMint({
 				</Box>
 				<Divider sx={{ border: "2px solid black", my: 4 }}></Divider>
 				{checkingEligibility ? (
-					<Eligibility></Eligibility>
+					<EligibilityMint></EligibilityMint>
 				) : showMint ? (
 					<Mint></Mint>
 				) : (
@@ -142,7 +145,7 @@ export default function FreeMint({
 	);
 }
 
-function Eligibility() {
+function EligibilityOld() {
 	const [checkedEligibility, setCheckedEligibility] = useState(false);
 	const [eligible, setEligible] = useState(false);
 	const [walletAddress, setWalletAddress] = useState("");
@@ -203,6 +206,69 @@ function Eligibility() {
 			>
 				Check
 			</Button>
+		</Box>
+	);
+}
+function EligibilityMint() {
+	const [{ wallet }, connect, disconnect] = useConnectWallet();
+	const { mintNft } = useContractFunctions();
+	return (
+		<Box>
+			<Box
+				sx={{
+					"&>*": { fontSize: { xs: "25px !important", md: "3rem !important" } },
+				}}
+			>
+				{/* <Typography fontWeight="bold" variant="h3">
+					Check if you are whitelisted.
+				</Typography>
+				<Typography fontWeight="bold" variant="h3">
+					Enter wallet address.
+				</Typography> */}
+			</Box>
+			{/* <form
+				onSubmit={(e) => {
+					e.preventDefault();
+					setCheckedEligibility(true);
+					setEligible(isWhitelisted(walletAddress));
+				}}
+			>
+				<TextField
+					sx={{ my: 3, width: "100%" }}
+					value={walletAddress}
+					onChange={(e) => {
+						setWalletAddress(e.target.value);
+					}}
+				></TextField>
+			</form> */}
+			{/* {checkedEligibility &&
+				(eligible ? (
+					<Typography variant="h5">
+						You are <i> whitelisted.</i>
+					</Typography>
+				) : (
+					<Typography variant="h5">
+						You are <i>not whitelisted.</i>
+					</Typography>
+				))} */}
+			<Button
+				sx={{
+					mx: "auto",
+					fontSize: { xs: 30, md: 45 },
+					px: { md: 13, xs: 5 },
+					display: "block",
+					mt: { xs: 5, lg: 10 },
+					mb: 2,
+				}}
+				onClick={() => {
+					// setCheckedEligibility(true);
+					// setEligible(isWhitelisted(walletAddress));
+					wallet ? mintNft() : connect();
+				}}
+			>
+				{wallet ? "Mint" : "Connect wallet"}
+			</Button>
+			<MintStatus></MintStatus>
 		</Box>
 	);
 }

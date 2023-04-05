@@ -199,7 +199,8 @@ export default function useContractFunctions() {
 
 	// calls whitelistbuy or publicClaim depending on stage
 	const mintNft = useCallback(async () => {
-		const { contract } = mintData;
+		const contract = mintData.contract;
+		console.log(mintData, mintData.contract);
 		if (contract) {
 			let res = Number(await contract.getStage());
 			if (res === 0) {
