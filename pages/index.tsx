@@ -14,6 +14,37 @@ import "@/src/initWallet";
 import MintProvider, { useMint } from "@/src/contexts/MintContext";
 const inter = Inter({ subsets: ["latin"] });
 
+const imagesBehindMothValley = [
+	"/crooked branch.png",
+	"/green pumpkin.png",
+	"/rock 7b.png",
+];
+
+function styleImagesBehindMothValley(imgSrc: string) {
+	return {
+		[`[data-src="${imgSrc}"]`]: {
+			zIndex: -1,
+		},
+	};
+}
+
+function getImagesBehindMothValleyObjStyled(show: boolean) {
+	const imagesBehindMothValleyObjStyled = {
+		img: {
+			display: show ? "none" : "block",
+		},
+	} as any;
+	imagesBehindMothValley.forEach((img) => {
+		imagesBehindMothValleyObjStyled[`img[data-src="${img}"]`] = {
+			// zIndex: "0 !important",
+			display: show ? "block !important" : "none",
+			// zIndex: "0 !important",
+		};
+	});
+	console.log(imagesBehindMothValleyObjStyled);
+	return imagesBehindMothValleyObjStyled;
+}
+
 export default function Home() {
 	return (
 		<>
@@ -28,6 +59,9 @@ export default function Home() {
 					width: "100%",
 					height: "100vh",
 					overflow: "hidden",
+					// ...(imagesBehindMothValley.map(img=>{
+					// 	return (...(styleImagesBehindMothValley(img)))
+					// })),
 					"&>*": {
 						height: "100%",
 						overflow: "hidden",
@@ -38,13 +72,47 @@ export default function Home() {
 				}}
 			>
 				<MintProvider>
-					<MothValley sx={{ position: "absolute", inset: "0" }}></MothValley>
 					<BugsAndImages
-						sx={{ opacity: 1, position: "absolute", inset: "0" }}
+						sx={{
+							zIndex: 1,
+							opacity: 1,
+							position: "absolute",
+							inset: "0",
+							...getImagesBehindMothValleyObjStyled(true),
+						}}
+					></BugsAndImages>
+					<LayerStones
+						sx={{
+							...getImagesBehindMothValleyObjStyled(true),
+							zIndex: 1,
+							position: "absolute",
+							inset: "0",
+						}}
+					></LayerStones>
+					<MothValley
+						sx={{ zIndex: 2, position: "absolute", inset: "0" }}
+					></MothValley>
+					<BugsAndImages
+						sx={{
+							zIndex: 3,
+							opacity: 1,
+							position: "absolute",
+							inset: "0",
+							...getImagesBehindMothValleyObjStyled(false),
+						}}
 					></BugsAndImages>
 
-					<LayerStones sx={{ position: "absolute", inset: "0" }}></LayerStones>
-					<UILayer sx={{ position: "absolute", inset: "0" }}></UILayer>
+					<LayerStones
+						sx={{
+							...getImagesBehindMothValleyObjStyled(false),
+							zIndex: 4,
+							position: "absolute",
+							inset: "0",
+						}}
+					></LayerStones>
+					{/* <UILayer
+						sx={{ zIndex: 5, position: "absolute", inset: "0" }}
+					></UILayer> */}
 				</MintProvider>
 			</Box>
 		</>
@@ -58,6 +126,8 @@ function MothValley({ sx }: { sx?: SxProps }) {
 				display: "grid",
 				placeItems: "center",
 				p: 5,
+				position: "relative",
+				zIndex: 1,
 				height: "100%",
 				...sx,
 			}}

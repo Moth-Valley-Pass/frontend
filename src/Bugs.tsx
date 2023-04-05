@@ -342,6 +342,7 @@ export default function BugsLargest({ sx }: { sx?: SxProps }) {
 					return (
 						<Draggable disabled={!ALLOW_DRAGGING} key={index}>
 							<Image
+								data-src={elem.src}
 								className={elem.className}
 								src={elem.src}
 								width={elem.width}

@@ -186,6 +186,7 @@ export default function LayerStones({ sx }: { sx?: SxProps }) {
 					return (
 						<Draggable disabled={!ALLOW_DRAGGING} key={img.src}>
 							<Image
+								data-src={img.src}
 								className={img.className}
 								src={img.src}
 								width={img.width}
@@ -237,7 +238,7 @@ function LayerStonesResponsive({ sx }: { sx?: SxProps }) {
 			window.removeEventListener("resize", handler);
 			setImagesTimeout && clearTimeout(setImagesTimeout);
 		};
-	}, [newImages]);
+	}, [newImages, resizedOnce]);
 	return (
 		<Box
 			sx={{
