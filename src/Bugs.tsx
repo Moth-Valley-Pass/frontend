@@ -380,21 +380,21 @@ const imagesResponsive: {
 		src: "/big fire moth.png",
 		className: "tilted-rotation big-fire-moth",
 	},
-	{
-		width: 380,
-		height: 380,
-		style: {
-			rotate: "-7deg",
-			zIndex: 2,
-			objectFit: "contain",
-			bottom: 180,
+	// {
+	// 	width: 380,
+	// 	height: 380,
+	// 	style: {
+	// 		rotate: "-7deg",
+	// 		zIndex: 2,
+	// 		objectFit: "contain",
+	// 		bottom: 180,
 
-			right: -50,
-			translate: "25% 25%",
-		},
-		src: "/big fire moth.png",
-		className: "tilted-rotation big-fire-moth",
-	},
+	// 		right: -50,
+	// 		translate: "25% 25%",
+	// 	},
+	// 	src: "/big fire moth.png",
+	// 	className: "tilted-rotation big-fire-moth",
+	// },
 	{
 		width: 339,
 		height: 339,
@@ -418,7 +418,7 @@ const imagesResponsive: {
 			// transform: "translateY(-50%) translateX(-50%)",
 			objectFit: "contain",
 		},
-		src: "/dark colorful flowerish.png",
+		src: "/hibiscus.png",
 		className: "scale-down-0-8",
 	},
 	{
@@ -465,6 +465,7 @@ function BugsLarge({ sx }: { sx?: SxProps }) {
 					<Image
 						key={index}
 						className={elem.className}
+						data-src={elem.src}
 						src={elem.src}
 						width={elem.width}
 						height={elem.height}

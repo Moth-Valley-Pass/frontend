@@ -20,21 +20,19 @@ const imagesBehindMothValley = [
 	"/rock 7b.png",
 ];
 
-function styleImagesBehindMothValley(imgSrc: string) {
-	return {
-		[`[data-src="${imgSrc}"]`]: {
-			zIndex: -1,
-		},
-	};
-}
+const imagesInMobileInFrontOfUI = [
+	"/shiny pumpkin.png",
+	"/big fire moth.png",
+	"/hibiscus.png",
+];
 
-function getImagesBehindMothValleyObjStyled(show: boolean) {
+function getImagesBehindMothValleyObjStyled(show: boolean, arr?: string[]) {
 	const imagesBehindMothValleyObjStyled = {
 		img: {
 			display: show ? "none" : "block",
 		},
 	} as any;
-	imagesBehindMothValley.forEach((img) => {
+	[...(arr || imagesBehindMothValley)].forEach((img) => {
 		imagesBehindMothValleyObjStyled[`img[data-src="${img}"]`] = {
 			// zIndex: "0 !important",
 			display: show ? "block !important" : "none",
@@ -44,6 +42,23 @@ function getImagesBehindMothValleyObjStyled(show: boolean) {
 	console.log(imagesBehindMothValleyObjStyled);
 	return imagesBehindMothValleyObjStyled;
 }
+
+// function getImagesInFrontOfUIStyled(show: boolean) {
+// 	const imagesBehindMothValleyObjStyled = {
+// 		img: {
+// 			display: show ? "none" : "block",
+// 		},
+// 	} as any;
+// 	imagesBehindMothValley.forEach((img) => {
+// 		imagesBehindMothValleyObjStyled[`img[data-src="${img}"]`] = {
+// 			// zIndex: "0 !important",
+// 			display: show ? "block !important" : "none",
+// 			// zIndex: "0 !important",
+// 		};
+// 	});
+// 	console.log(imagesBehindMothValleyObjStyled);
+// 	return imagesBehindMothValleyObjStyled;
+// }
 
 export default function Home() {
 	return (
@@ -78,6 +93,8 @@ export default function Home() {
 							opacity: 1,
 							position: "absolute",
 							inset: "0",
+							display: { lg: "block", xs: "none" },
+
 							...getImagesBehindMothValleyObjStyled(true),
 						}}
 					></BugsAndImages>
@@ -94,6 +111,7 @@ export default function Home() {
 					></MothValley>
 					<BugsAndImages
 						sx={{
+							display: { lg: "block", xs: "none" },
 							zIndex: 3,
 							opacity: 1,
 							position: "absolute",
@@ -110,9 +128,37 @@ export default function Home() {
 							inset: "0",
 						}}
 					></LayerStones>
+
+					<BugsAndImages
+						sx={{
+							display: { xs: "block", lg: "none" },
+							zIndex: 4,
+							opacity: 1,
+							position: "absolute",
+							inset: "0",
+							...getImagesBehindMothValleyObjStyled(
+								false,
+								imagesInMobileInFrontOfUI
+							),
+						}}
+					></BugsAndImages>
 					<UILayer
 						sx={{ zIndex: 5, position: "absolute", inset: "0" }}
 					></UILayer>
+					<BugsAndImages
+						sx={{
+							display: { xs: "block", lg: "none" },
+							zIndex: 6,
+							opacity: 1,
+							position: "absolute",
+							pointerEvents: "none",
+							inset: "0",
+							...getImagesBehindMothValleyObjStyled(
+								true,
+								imagesInMobileInFrontOfUI
+							),
+						}}
+					></BugsAndImages>
 				</MintProvider>
 			</Box>
 		</>
