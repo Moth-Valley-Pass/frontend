@@ -268,7 +268,7 @@ function EligibilityMint() {
 			>
 				{wallet ? "Mint" : "Connect wallet"}
 			</Button>
-			<MintStatus></MintStatus>
+			{wallet && <MintStatus></MintStatus>}
 		</Box>
 	);
 }
