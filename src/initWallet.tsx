@@ -3,7 +3,7 @@ import ledgerModule from "@web3-onboard/ledger";
 import walletConnectModule from "@web3-onboard/walletconnect";
 import injectedModule from "@web3-onboard/injected-wallets";
 import { init } from "@web3-onboard/react";
-import { NETWORK_ID, NETWORK_NAME, RPC_PROVIDER } from "./CONSTANTS";
+import { APP_URL, NETWORK_ID, NETWORK_NAME, RPC_PROVIDER } from "./CONSTANTS";
 import { OWNER_EMAIL } from "./CONSTANTS";
 
 const rpcUrl = RPC_PROVIDER;
@@ -32,7 +32,7 @@ init({
 		walletConnect,
 		trezorModule({
 			email: OWNER_EMAIL,
-			appUrl: "google.com",
+			appUrl: APP_URL,
 		}),
 		ledgerModule(),
 	],
@@ -46,7 +46,7 @@ init({
 	],
 	appMetadata: {
 		name: "Moth Valley Pass",
-		icon: "/" + "/favicon.ico",
+		icon: "/favicon.ico",
 		description: "Mint awesome NFTs",
 		recommendedInjectedWallets: [
 			{ name: "MetaMask", url: "https://metamask.io/" },
