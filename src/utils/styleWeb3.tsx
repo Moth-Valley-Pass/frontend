@@ -1,13 +1,11 @@
 export default function styleWeb3Account() {
 	let elem = document.querySelector("onboard-v2") as HTMLElement;
 	if (!elem) return;
-	console.log(elem);
 	let parent = elem.shadowRoot as ShadowRoot;
 
 	if (!parent) return;
 
 	let content = parent.querySelector("section") as HTMLDivElement;
-	console.log(parent, content, parent.querySelectorAll("*"));
 	var style = document.createElement("style");
 	style.innerHTML = "section { z-index: 9999 !important; }";
 	parent.appendChild(style);

@@ -26,7 +26,7 @@ export default function useContractFunctions() {
 			try {
 				let receipt = await ethers.getTransactionReceipt(txHash);
 				if (receipt === null) {
-					console.log("Failed to get tx receipt....");
+					console.error("Failed to get tx receipt....");
 					await sleep(3000);
 				}
 				console.log("Success", receipt, txHash);
@@ -41,7 +41,7 @@ export default function useContractFunctions() {
 					errorText: "Receipt error: " + er.message,
 				}));
 
-				console.log("Receipt error:", er);
+				console.error("Receipt error:", er);
 			}
 		},
 		[setMintData]
@@ -101,7 +101,7 @@ export default function useContractFunctions() {
 				}
 
 				const boxError = true;
-				console.log({ errorText });
+				console.error({ errorText });
 				setMintData((s) => ({ ...s, boxError, isLoading, errorText }));
 			}
 		},
@@ -211,6 +211,8 @@ export default function useContractFunctions() {
 				publicClaim();
 			} else if (res === 999) {
 				alert("Sold out");
+			} else {
+				alert("Cannot determine mint stage " + res);
 			}
 			setMintData((d) => ({ ...d, stage: res as typeof d.stage }));
 		} else {

@@ -70,14 +70,11 @@ export default function MintProvider({ children }: { children: any }) {
 	}, [wallet, wallet?.provider]);
 
 	useEffect(() => {
-		// console.log(contract);
 		contract?.getStage().then((res) => {
 			setMintData((d) => ({ ...d, stage: Number(res) as typeof d.stage }));
 		});
 	}, [contract]);
 	useEffect(() => {
-		// console.log(contract);
-
 		if (!wallet) {
 			setMintData((d) => ({
 				...d,

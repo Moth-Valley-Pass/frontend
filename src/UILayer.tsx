@@ -120,7 +120,7 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 					>
 						<Link
 							sx={{ textDecoration: "none" }}
-							href="https://mothvalley.blog"
+							href="https://mothvalley.super.site/"
 						>
 							<Button>Blog</Button>
 						</Link>

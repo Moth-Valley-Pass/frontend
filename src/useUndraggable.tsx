@@ -18,12 +18,12 @@ export default function useUndraggable() {
 				const translated = getTranslateFromMatrix(
 					getComputedStyle(elem).transform
 				);
-				console.log((elem as HTMLImageElement).alt, {
-					top: existing.top + translated.top,
-					left: existing.left + translated.left,
-				});
+				// console.log((elem as HTMLImageElement).alt, {
+				// 	top: existing.top + translated.top,
+				// 	left: existing.left + translated.left,
+				// });
 			} else {
-				console.log("Not contains");
+				// console.log("Not contains");
 			}
 		}
 		window.addEventListener("dblclick", handler);
