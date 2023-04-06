@@ -74,7 +74,7 @@ export default function FreeMint({
 				</Box>
 				<Divider sx={{ border: "2px solid black", my: 4 }}></Divider>
 				{checkingEligibility ? (
-					<EligibilityMint></EligibilityMint>
+					<EligibilityOld></EligibilityOld>
 				) : showMint ? (
 					<Mint></Mint>
 				) : (
@@ -153,7 +153,7 @@ function EligibilityOld() {
 	// const eligible = Boolean(walletAddress);
 	return (
 		<Box>
-			<Alert severity="error">Whitelist not implemented yet</Alert>
+			{/* <Alert severity="error">Whitelist not implemented yet</Alert> */}
 
 			<Box
 				sx={{

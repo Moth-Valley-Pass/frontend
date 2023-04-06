@@ -81,11 +81,10 @@ export default function Seasons({
 						}}
 					>
 						<Stack alignItems="center">
-							<IconButton>
+							<IconButton onClick={() => setSeason1Open(true)}>
 								<Image
 									width={250}
 									height={250}
-									onClick={() => setSeason1Open(true)}
 									src="/Folder.svg"
 									alt="Close btn"
 								></Image>
