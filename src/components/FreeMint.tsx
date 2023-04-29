@@ -13,7 +13,7 @@ import {
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import CloseBtn, { CloseBtnContainer } from "./CloseBtn";
-import { isWhitelisted } from "../utils/isWhitelisted";
+import { GetWhitelistEligibility, isWhitelisted } from "../utils/isWhitelisted";
 import { useConnectWallet } from "@web3-onboard/react";
 import useContractFunctions from "../hooks/useContractFunctions";
 import MintStatus from "./MintStatus";
@@ -179,19 +179,17 @@ function EligibilityOld() {
 					value={walletAddress}
 					onChange={(e) => {
 						setWalletAddress(e.target.value);
+						setCheckedEligibility(false);
 					}}
 				></TextField>
 			</form>
-			{checkedEligibility &&
-				(eligible ? (
-					<Typography variant="h5">
-						You are <i> whitelisted.</i>
-					</Typography>
-				) : (
-					<Typography variant="h5">
-						You are <i>not whitelisted.</i>
-					</Typography>
-				))}
+			{checkedEligibility && (
+				<Typography variant="h5">
+					<GetWhitelistEligibility
+						addr={walletAddress}
+					></GetWhitelistEligibility>
+				</Typography>
+			)}
 			<Button
 				sx={{
 					mx: "auto",
@@ -210,6 +208,7 @@ function EligibilityOld() {
 		</Box>
 	);
 }
+
 function EligibilityMint() {
 	const [{ wallet }, connect, disconnect] = useConnectWallet();
 	const { mintNft } = useContractFunctions();

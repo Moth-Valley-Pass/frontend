@@ -148,10 +148,18 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 }
 
 function formatDate(): string {
-	const date = new Date(); // get current date
+	// get current date in UTC
+	const nowUtc = new Date().getTime();
+
+	// offset for Eastern Standard Time (EST) in milliseconds
+	const estOffset = 5 * 60 * 60 * 1000;
+
+	// create new Date object for current EST date/time
+	const date = new Date(nowUtc - estOffset);
+
 	const month = date.toLocaleString("en-US", { month: "short" }); // get abbreviated month name
-	const day = date.getDate(); // get day of the month
-	const year = date.getFullYear(); // get year
+	const day = date.getUTCDate(); // get day of the month
+	const year = date.getUTCFullYear(); // get year
 	const suffix = getDaySuffix(day); // get day suffix (st, nd, rd, th)
 
 	// function to get day suffix

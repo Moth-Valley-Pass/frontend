@@ -352,6 +352,7 @@ function LayerStonesResponsive({ sx }: { sx?: SxProps }) {
 		>
 			{newImages
 				.filter((img) => img.responsive)
+				.reverse()
 				.map((img) => {
 					return (
 						<Draggable disabled={!ALLOW_DRAGGING} key={img.src}>
