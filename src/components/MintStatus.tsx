@@ -1,10 +1,23 @@
 import React from "react";
 import { useMint } from "../contexts/MintContext";
 import { Link, Box, Alert, Typography, Stack } from "@mui/material";
-import { EXPLORER_URI } from "../CONSTANTS";
+import {
+	EXPLORER_URI,
+	NETWORK_ID,
+	AVAX_TESTNET,
+	NETWORK_NAME,
+} from "../CONSTANTS";
+import { useConnectWallet } from "@web3-onboard/react";
+import { useSetChain } from "@web3-onboard/react";
 
 export default function MintStatus() {
 	const [mintData] = useMint();
+	const [{ wallet }] = useConnectWallet();
+	const [
+		{
+			connectedChain, // the current chain the user's wallet is
+		},
+	] = useSetChain();
 
 	function getState() {
 		switch (mintData.stage) {
@@ -24,6 +37,7 @@ export default function MintStatus() {
 				return null;
 		}
 	}
+	console.log("Stage", mintData.stage, mintData);
 
 	return (
 		<>
@@ -37,6 +51,11 @@ export default function MintStatus() {
 					border: "2px solid black",
 				}}
 			>
+				{Number(connectedChain?.id) !== NETWORK_ID && (
+					<Alert severity="error">
+						Error: Please connect to {NETWORK_NAME}
+					</Alert>
+				)}
 				{mintData.errorText && (
 					<Alert severity="error">Error: {mintData.errorText}</Alert>
 				)}
