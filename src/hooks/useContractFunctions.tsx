@@ -75,13 +75,37 @@ export default function useContractFunctions() {
 			await stateEthers.send("eth_requestAccounts", []);
 			const signer = await stateEthers.getSigner();
 			const contract = new ethers.Contract(CONTRACT_ADDR, ABI, signer);
+			const account = await signer.getAddress();
 
-			setMintData((s) => ({ ...s, signer, contract }));
+			setMintData((s) => ({ ...s, signer, contract, account }));
 
 			// here you need to initialize the contract with the signer from the wallet connect... otherwise you can just do READ operations
 			// state.isLoading = true;
 			// state.loadingText =
 			// 	"Sending transaction to the blockchain. please check your wallet for confirmation";
+
+			// check whitelist
+			const whitelist = mintData.whitelistFirstComeFirstServe;
+			let selectedCandidate: null | (typeof whitelist)[0] = null;
+			for (let i = 0; i < whitelist.length; i++) {
+				if (
+					String(whitelist[i]["Address"]).toLowerCase() ===
+					String(account).toLowerCase()
+				) {
+					selectedCandidate = whitelist[i];
+				}
+			}
+			if (!selectedCandidate) {
+				const errorText =
+					"Your address " +
+					account +
+					" is not whitelisted. Please connect with the correct wallet";
+				const boxError = true;
+				const isLoading = false;
+				setMintData((s) => ({ ...s, errorText, boxError, isLoading }));
+				return;
+			}
+
 			try {
 				const tx = await contract.publicClaim(quantity);
 				console.log({ tx });
@@ -95,7 +119,7 @@ export default function useContractFunctions() {
 					errorText = "transaction canceled";
 					return;
 				} else if (err.message.includes("insufficient funds")) {
-					errorText = "you do not have enough ETH for this transaction";
+					errorText = "You do not have enough ETH for this transaction";
 				} else {
 					errorText = err.message;
 				}
@@ -138,8 +162,8 @@ export default function useContractFunctions() {
 			setMintData((s) => ({ ...s, signer, contract, account }));
 
 			//WHITELIST
-			const { whitelist } = mintData;
-			let selectedCandidate: null | typeof whitelist[0] = null;
+			const whitelist = mintData.whitelistConfirmed;
+			let selectedCandidate: null | (typeof whitelist)[0] = null;
 			for (let i = 0; i < whitelist.length; i++) {
 				if (
 					String(whitelist[i]["Address"]).toLowerCase() ===
@@ -200,7 +224,7 @@ export default function useContractFunctions() {
 	// calls whitelistbuy or publicClaim depending on stage
 	const mintNft = useCallback(async () => {
 		const contract = mintData.contract;
-		console.log(mintData, mintData.contract);
+
 		if (contract) {
 			let res = Number(await contract.getStage());
 			if (res === 0) {

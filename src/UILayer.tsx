@@ -134,12 +134,43 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 						}}
 					>
 						<Marquee gradientWidth={0} delay={0.5}>
-							&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Mar 31st, 2023 - 875 Community
-							Members -Season 1: Game of Chance - 91 Unique Artworks - Mar
+							&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;{formatDate()} -&nbsp;
+							<strong>875</strong>&nbsp;Community Members - Season&nbsp;
+							<>1</>&nbsp;:&nbsp;
+							<strong>Game of Chance</strong>&nbsp;-&nbsp;<strong>91</strong>
+							&nbsp;Unique Artworks -
 						</Marquee>
 					</Box>
 				</Box>
 			</Stack>
 		</Box>
 	);
+}
+
+function formatDate(): string {
+	const date = new Date(); // get current date
+	const month = date.toLocaleString("en-US", { month: "short" }); // get abbreviated month name
+	const day = date.getDate(); // get day of the month
+	const year = date.getFullYear(); // get year
+	const suffix = getDaySuffix(day); // get day suffix (st, nd, rd, th)
+
+	// function to get day suffix
+	function getDaySuffix(day: number): string {
+		if (day >= 11 && day <= 13) {
+			return "th";
+		}
+		switch (day % 10) {
+			case 1:
+				return "st";
+			case 2:
+				return "nd";
+			case 3:
+				return "rd";
+			default:
+				return "th";
+		}
+	}
+
+	const formattedDate = `${month} ${day}${suffix}, ${year}`; // concatenate parts into final string
+	return formattedDate;
 }
