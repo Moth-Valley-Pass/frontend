@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { Box } from "@mui/material";
@@ -9,11 +9,16 @@ import React from "react";
 import { ALLOW_DRAGGING } from "./CONSTANTS";
 
 interface IImages {
-	style?: React.CSSProperties;
+	style: React.CSSProperties;
 	width: number;
 	height: number;
 	src: string;
 	className?: string;
+	responsive?: {
+		top: number;
+		left: number;
+		className?: string;
+	};
 }
 // translate-bottom-right
 // translate-bottom-left-stones
@@ -39,6 +44,11 @@ let images: IImages[] = [
 		className: "translate-bottom-left",
 
 		style: { top: 541, left: 1097 },
+		responsive: {
+			className: "translate-top-down-stones",
+			top: 235,
+			left: 1064,
+		},
 	},
 	// next 4 together near the crooked branch
 	{
@@ -61,6 +71,10 @@ let images: IImages[] = [
 		src: "/rock 3.png",
 		style: { top: 488, left: 1368 },
 		className: "translate-top-right",
+		responsive: {
+			top: 111,
+			left: 1112,
+		},
 	},
 	{
 		width: 40,
@@ -133,7 +147,11 @@ let images: IImages[] = [
 		height: 40,
 		src: "/rock 7d.png",
 		style: { top: 408, left: 402 },
+		responsive: { top: 208, left: 845 },
 		className: "translate-bottom-right",
+		// responsive:{
+
+		// }
 	},
 
 	// next 3 go together, left of big grey/brown moth
@@ -160,8 +178,81 @@ let images: IImages[] = [
 	},
 ];
 
+// images.forEach((img) => {
+// 	delete img.className;
+// });
+
 export default function LayerStones({ sx }: { sx?: SxProps }) {
 	const ref = useUndraggable();
+	const [newImages, setNewImages] = useState<IImages[]>(
+		JSON.parse(JSON.stringify(images))
+	);
+	const [resizedOnce, setResizedOnce] = useState(false);
+
+	const convertLeftTop = useCallback(function (
+		left: number,
+		top: number,
+		width: number,
+		height: number
+	) {
+		const originalWidth = 1842;
+		const originalHeight = 1009;
+
+		const proportionalLeft = (left / originalWidth) * width;
+		const proportionalTop = (top / originalHeight) * height;
+
+		return {
+			left: proportionalLeft,
+			top: proportionalTop,
+		};
+	},
+	[]);
+
+	useEffect(() => {
+		let handlerTimer: null | ReturnType<typeof setTimeout>;
+		if (!resizedOnce) {
+			setResizedOnce(true);
+			handler(undefined, true);
+		}
+		function handler(e?: Event, immediate?: boolean) {
+			const { innerWidth, innerHeight } = window;
+			let newImagesToSet = structuredClone(images).map((img) => {
+				const { left, top } = convertLeftTop(
+					parseInt(String(img.style.left) || String(0)),
+					parseInt(String(img.style.top) || String(0)),
+					innerWidth,
+					innerHeight
+				);
+
+				const widthHeightRatio = img.width / img.height;
+
+				const { width, height } = img;
+
+				img.width = (innerWidth / 1842) * img.width;
+				img.height = img.width / widthHeightRatio;
+
+				const ratio = width / ((innerWidth / 1842) * img.width);
+
+				img.style.left = `${left}px`;
+				img.style.top = `${top}px`;
+
+				return img;
+			});
+			if (!immediate) {
+				handlerTimer && clearTimeout(handlerTimer);
+				handlerTimer = setTimeout(() => {
+					setNewImages(newImagesToSet);
+				}, 1000);
+			} else {
+				setNewImages(newImagesToSet);
+			}
+		}
+		window.addEventListener("resize", handler);
+
+		return () => {
+			window.removeEventListener("resize", handler);
+		};
+	}, [convertLeftTop, newImages, resizedOnce]);
 
 	return (
 		<>
@@ -182,7 +273,7 @@ export default function LayerStones({ sx }: { sx?: SxProps }) {
 					...sx,
 				}}
 			>
-				{images.map((img) => {
+				{newImages.map((img) => {
 					return (
 						<Draggable disabled={!ALLOW_DRAGGING} key={img.src}>
 							<Image
@@ -207,6 +298,7 @@ function LayerStonesResponsive({ sx }: { sx?: SxProps }) {
 		JSON.parse(JSON.stringify(images))
 	);
 	let [resizedOnce, setResizedOnce] = useState(false);
+	const ref = useUndraggable();
 
 	useEffect(() => {
 		let setImagesTimeout: null | ReturnType<typeof setTimeout>;
@@ -216,7 +308,12 @@ function LayerStonesResponsive({ sx }: { sx?: SxProps }) {
 		}
 		function handler() {
 			const { innerHeight, innerWidth } = window;
-			newImages.forEach((elem) => {
+			newImages.forEach((elem, index) => {
+				let { responsive } = elem;
+				if (!responsive) return;
+
+				const originalImg = images[index];
+
 				delete elem.style?.left;
 				delete elem.style?.right;
 				delete elem.style?.top;
@@ -224,8 +321,8 @@ function LayerStonesResponsive({ sx }: { sx?: SxProps }) {
 				if (!elem.style) {
 					elem.style = {};
 				}
-				elem.style!.left = `${Math.random() * innerWidth}px`;
-				elem.style!.top = `${Math.random() * innerHeight}px`;
+				elem.style!.left = `${(innerWidth / 1300) * responsive.left}px`;
+				elem.style!.top = `${(innerHeight / 600) * responsive.top}px`;
 			});
 			setImagesTimeout && clearTimeout(setImagesTimeout);
 
@@ -241,6 +338,7 @@ function LayerStonesResponsive({ sx }: { sx?: SxProps }) {
 	}, [newImages, resizedOnce]);
 	return (
 		<Box
+			ref={ref}
 			sx={{
 				height: "100%",
 				"&>*": {
@@ -252,20 +350,22 @@ function LayerStonesResponsive({ sx }: { sx?: SxProps }) {
 				...sx,
 			}}
 		>
-			{newImages.map((img) => {
-				return (
-					<Draggable disabled={!ALLOW_DRAGGING} key={img.src}>
-						<Image
-							className={img.className}
-							src={img.src}
-							width={img.width}
-							style={img.style}
-							height={img.height}
-							alt={img.src}
-						></Image>
-					</Draggable>
-				);
-			})}
+			{newImages
+				.filter((img) => img.responsive)
+				.map((img) => {
+					return (
+						<Draggable disabled={!ALLOW_DRAGGING} key={img.src}>
+							<Image
+								className={img.responsive?.className || img.className}
+								src={img.src}
+								width={img.width}
+								style={img.style}
+								height={img.height}
+								alt={img.src}
+							></Image>
+						</Draggable>
+					);
+				})}
 		</Box>
 	);
 }

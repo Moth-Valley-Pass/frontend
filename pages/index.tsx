@@ -152,6 +152,14 @@ export default function Home() {
 							),
 						}}
 					></BugsAndImages>
+					{/* <LayerStones
+						sx={{
+							...getImagesBehindMothValleyObjStyled(false),
+							zIndex: 4,
+							position: "absolute",
+							inset: "0",
+						}}
+					></LayerStones> */}
 				</MintProvider>
 			</Box>
 		</>

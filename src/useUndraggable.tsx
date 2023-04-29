@@ -8,7 +8,7 @@ export default function useUndraggable() {
 		box.querySelectorAll("img").forEach((img) => {
 			img.draggable = false;
 		});
-		function handler(e: MouseEvent) {
+		function handler(e: TouchEvent) {
 			let elem = e.target as HTMLDivElement;
 			if (box.contains(elem as any)) {
 				const existing = {
@@ -18,17 +18,17 @@ export default function useUndraggable() {
 				const translated = getTranslateFromMatrix(
 					getComputedStyle(elem).transform
 				);
-				// console.log((elem as HTMLImageElement).alt, {
-				// 	top: existing.top + translated.top,
-				// 	left: existing.left + translated.left,
-				// });
+				console.log((elem as HTMLImageElement).alt, {
+					top: existing.top + translated.top,
+					left: existing.left + translated.left,
+				});
 			} else {
 				// console.log("Not contains");
 			}
 		}
-		window.addEventListener("dblclick", handler);
+		window.addEventListener("touchstart", handler);
 		return () => {
-			window.removeEventListener("dblclick", handler);
+			window.removeEventListener("touchstart", handler);
 		};
 	});
 

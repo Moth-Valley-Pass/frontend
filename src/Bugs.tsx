@@ -288,12 +288,18 @@ export default function BugsLargest({ sx }: { sx?: SxProps }) {
 					innerWidth,
 					innerHeight
 				);
-				img.style.left = `${left}px`;
-				img.style.top = `${top}px`;
+
 				const widthHeightRatio = img.width / img.height;
+
+				const { width, height } = img;
 
 				img.width = (innerWidth / 1842) * img.width;
 				img.height = img.width / widthHeightRatio;
+
+				const ratio = width / ((innerWidth / 1842) * img.width);
+
+				img.style.left = `${left}px`;
+				img.style.top = `${top}px`;
 
 				return img;
 			});
