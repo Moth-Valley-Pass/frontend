@@ -74,7 +74,7 @@ export default function MintArtwork() {
 				>
 					{minted ? "Burn success" : "					Click to select cards to burn"}
 				</Typography>
-				<Box>
+				<Box sx={{ width: !minted ? "min(100%, 410px)" : undefined }}>
 					{minted ? (
 						<>
 							{" "}
@@ -96,7 +96,7 @@ export default function MintArtwork() {
 						</>
 					) : (
 						<Button
-							sx={{ fontSize: "20px", my: 2, width: "410px" }}
+							sx={{ fontSize: "20px", my: 2, width: "min(100%, 410px)" }}
 							onClick={() => {
 								if (wallet) {
 									mintNft();
@@ -119,7 +119,7 @@ export default function MintArtwork() {
 }
 export function MintArtWorkHeading() {
 	return (
-		<Box sx={{ maxWidth: "100%", overflow: "auto" }}>
+		<Box sx={{ maxWidth: "100%", overflow: "auto", pr: 8 }}>
 			<Stack
 				sx={{
 					img: {

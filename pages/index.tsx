@@ -7,6 +7,7 @@ import LayerStones from "@/src/Stones";
 import UILayer from "@/src/UILayer";
 import "@/src/initWallet";
 import MintProvider from "@/src/contexts/MintContext";
+import { useEffect, useRef } from "react";
 
 const imagesBehindMothValley = [
 	"/crooked branch.png",
@@ -35,6 +36,32 @@ function getImagesBehindMothValleyObjStyled(show: boolean, arr?: string[]) {
 }
 
 export default function Home() {
+	const boxRef = useRef<HTMLDivElement>(null);
+	useEffect(() => {
+		// Set the initial height of the box element to the height of the viewport
+		if (boxRef.current) {
+			boxRef.current.style.height = `${window.innerHeight}px`;
+			document.body.style.height = `${window.innerHeight}px`;
+			document.body.style.position = "relative";
+		}
+
+		// Handler function to set the height of the box element on resize
+		const handleResize = () => {
+			if (boxRef.current) {
+				boxRef.current.style.height = `${window.innerHeight}px`;
+				document.body.style.height = `${window.innerHeight}px`;
+			}
+		};
+
+		// Add event listener for resize events
+		window.addEventListener("resize", handleResize);
+
+		// Cleanup function to remove the event listener on unmount
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, []);
+
 	return (
 		<>
 			<Head>
@@ -63,9 +90,10 @@ export default function Home() {
 				<link rel="manifest" href="/site.webmanifest"></link>
 			</Head>
 			<Box
+				ref={boxRef}
 				sx={{
 					width: "100%",
-					height: "100vh",
+					height: "100%",
 					overflow: "hidden",
 					// ...(imagesBehindMothValley.map(img=>{
 					// 	return (...(styleImagesBehindMothValley(img)))
