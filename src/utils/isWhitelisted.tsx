@@ -1,4 +1,3 @@
-import { whitelist } from "../data/whitelist";
 import { whitelistConfirmed } from "../data/whitelistConfirmed";
 import { whitelistFirstComeFirstServe } from "../data/whitelistFirstComeFirstServe";
 

@@ -10,13 +10,11 @@ import {
 } from "../CONSTANTS";
 import { ABI } from "../data/abi";
 import { Web3OnboardProvider, useConnectWallet } from "@web3-onboard/react";
-import { whitelist } from "../data/whitelist";
 import Loader from "../components/Loader";
 import { whitelistConfirmed } from "../data/whitelistConfirmed";
 import { whitelistFirstComeFirstServe } from "../data/whitelistFirstComeFirstServe";
 
 const initialState = {
-	whitelist: whitelist,
 	whitelistConfirmed,
 	whitelistFirstComeFirstServe,
 	totalMinted: 0,
