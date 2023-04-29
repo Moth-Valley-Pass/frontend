@@ -152,7 +152,9 @@ function EligibilityOld() {
 	const [walletAddress, setWalletAddress] = useState("");
 	// const eligible = Boolean(walletAddress);
 	return (
-		<Box>
+		<Box
+			sx={{ position: "relative", whiteSpace: "nowrap", overflow: "hidden" }}
+		>
 			{/* <Alert severity="error">Whitelist not implemented yet</Alert> */}
 
 			<Box
@@ -184,7 +186,15 @@ function EligibilityOld() {
 				></TextField>
 			</form>
 			{checkedEligibility && (
-				<Typography variant="h5">
+				<Typography
+					sx={{
+						position: { lg: "absolute" },
+						whiteSpace: "normal",
+						overflow: "hidden",
+						wordWrap: "break-word",
+					}}
+					variant="h5"
+				>
 					<GetWhitelistEligibility
 						addr={walletAddress}
 					></GetWhitelistEligibility>

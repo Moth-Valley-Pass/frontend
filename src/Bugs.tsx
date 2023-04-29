@@ -307,7 +307,7 @@ export default function BugsLargest({ sx }: { sx?: SxProps }) {
 				handlerTimer && clearTimeout(handlerTimer);
 				handlerTimer = setTimeout(() => {
 					setNewImages(newImagesToSet);
-				}, 1000);
+				}, 300);
 			} else {
 				setNewImages(newImagesToSet);
 			}
