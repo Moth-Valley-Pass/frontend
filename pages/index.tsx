@@ -1,18 +1,12 @@
 import Head from "next/head";
-import { useRef, useEffect } from "react";
-import Image from "next/image";
 import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import { Stack, Box, Button, Typography } from "@mui/material";
-import Marquee from "react-fast-marquee";
+import { Box, Typography } from "@mui/material";
 import { SxProps } from "@mui/material/styles";
 import BugsAndImages from "@/src/Bugs";
-import Draggable from "react-draggable";
 import LayerStones from "@/src/Stones";
 import UILayer from "@/src/UILayer";
 import "@/src/initWallet";
-import MintProvider, { useMint } from "@/src/contexts/MintContext";
-const inter = Inter({ subsets: ["latin"] });
+import MintProvider from "@/src/contexts/MintContext";
 
 const imagesBehindMothValley = [
 	"/crooked branch.png",
@@ -34,29 +28,11 @@ function getImagesBehindMothValleyObjStyled(show: boolean, arr?: string[]) {
 	} as any;
 	[...(arr || imagesBehindMothValley)].forEach((img) => {
 		imagesBehindMothValleyObjStyled[`img[data-src="${img}"]`] = {
-			// zIndex: "0 !important",
 			display: show ? "block !important" : "none",
-			// zIndex: "0 !important",
 		};
 	});
 	return imagesBehindMothValleyObjStyled;
 }
-
-// function getImagesInFrontOfUIStyled(show: boolean) {
-// 	const imagesBehindMothValleyObjStyled = {
-// 		img: {
-// 			display: show ? "none" : "block",
-// 		},
-// 	} as any;
-// 	imagesBehindMothValley.forEach((img) => {
-// 		imagesBehindMothValleyObjStyled[`img[data-src="${img}"]`] = {
-// 			// zIndex: "0 !important",
-// 			display: show ? "block !important" : "none",
-// 			// zIndex: "0 !important",
-// 		};
-// 	});
-// 	return imagesBehindMothValleyObjStyled;
-// }
 
 export default function Home() {
 	return (
