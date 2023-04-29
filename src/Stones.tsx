@@ -242,7 +242,7 @@ export default function LayerStones({ sx }: { sx?: SxProps }) {
 				handlerTimer && clearTimeout(handlerTimer);
 				handlerTimer = setTimeout(() => {
 					setNewImages(newImagesToSet);
-				}, 300);
+				}, 100);
 			} else {
 				setNewImages(newImagesToSet);
 			}
