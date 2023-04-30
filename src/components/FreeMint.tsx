@@ -80,7 +80,10 @@ export default function FreeMint({
 						{/* <EligibilityMint /> */}
 					</>
 				) : showMint ? (
-					mintData.txHash && !mintData.errorText && <Mint></Mint>
+					<>
+						mintData.txHash && !mintData.errorText && <Mint></Mint>
+						{/* <Mint></Mint> */}
+					</>
 				) : (
 					<Stack
 						justifyContent="center"
@@ -286,7 +289,8 @@ function Mint() {
 						src={
 							poapClaimed
 								? "/monthly valley roadmap.png"
-								: "/brown fly green bg card.png"
+								: // : "/brown fly green bg card.png"
+								  "/mint successfull.png"
 						}
 						alt="mint card"
 					></Image>
@@ -346,8 +350,8 @@ function Mint() {
 							onClick={tweet}
 							sx={{
 								alignSelf: "center",
-								fontSize: { xs: "25px", lg: "30px" },
-								px: { lg: 5, xs: 3 },
+								fontSize: { xs: "20px", lg: "30px" },
+								px: { lg: 5, xs: 2 },
 
 								// width: "482px",
 								// height: "82px",
@@ -396,6 +400,7 @@ function tweet(): void {
 	window.open(`https://twitter.com/intent/tweet?text=${tweetContent}`);
 }
 function isItApril30At12pmESTYet(): boolean {
+	return true;
 	const now = new Date();
 	// Create a Date object for the current time in EST
 	const est = new Date(
