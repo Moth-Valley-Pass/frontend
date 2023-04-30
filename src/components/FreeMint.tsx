@@ -120,7 +120,7 @@ export default function FreeMint({
 							alignItems="center"
 							sx={{ "&>*": { maxWidth: "100%" } }}
 						>
-							{isItApril30At4pmESTYet() && (
+							{isItApril30At12pmESTYet() && (
 								<Button
 									size="large"
 									sx={{
@@ -395,13 +395,13 @@ function tweet(): void {
 
 	window.open(`https://twitter.com/intent/tweet?text=${tweetContent}`);
 }
-function isItApril30At4pmESTYet(): boolean {
+function isItApril30At12pmESTYet(): boolean {
 	const now = new Date();
 	// Create a Date object for the current time in EST
 	const est = new Date(
 		now.toLocaleString("en-US", { timeZone: "America/New_York" })
 	);
 
-	// Check if it is April 30th and 4PM or later
-	return est.getMonth() >= 3 && est.getDate() >= 30 && est.getHours() >= 16;
+	// Check if it is April 30th and 12PM or later
+	return est.getMonth() >= 3 && est.getDate() >= 30 && est.getHours() >= 12;
 }
