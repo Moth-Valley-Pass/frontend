@@ -1,4 +1,5 @@
 export default function styleWeb3Account() {
+	console.log("HEy?");
 	let elem = document.querySelector("onboard-v2") as HTMLElement;
 	if (!elem) return;
 	let parent = elem.shadowRoot as ShadowRoot;
@@ -10,8 +11,8 @@ export default function styleWeb3Account() {
 	style.innerHTML = "section { z-index: 9999 !important; }";
 	parent.appendChild(style);
 	if (!content) return;
-
-	content.style.zIndex = "3000";
+	console.log({ content });
+	content.style.zIndex = "13000";
 	return;
 	content.style.top = "60px";
 	content.style.right = "50%";

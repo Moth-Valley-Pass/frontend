@@ -44,8 +44,11 @@ export default function Seasons({
 							// 	onClose();
 							// }
 							onClose();
-							setMintArtworkOpen(false);
-							setSeason1Open(false);
+							// clsoe anim takes time
+							setTimeout(() => {
+								setMintArtworkOpen(false);
+								setSeason1Open(false);
+							}, 500);
 						}}
 					></CloseBtn>
 				</CloseBtnContainer>

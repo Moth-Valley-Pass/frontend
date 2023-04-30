@@ -18,6 +18,8 @@ import { useConnectWallet } from "@web3-onboard/react";
 import useContractFunctions from "../hooks/useContractFunctions";
 import MintStatus from "./MintStatus";
 import styleWeb3Account from "../utils/styleWeb3";
+import { useMint } from "../contexts/MintContext";
+import { EXPLORER_URI } from "../CONSTANTS";
 
 export default function FreeMint({
 	open,
@@ -28,6 +30,9 @@ export default function FreeMint({
 }) {
 	const [checkingEligibility, setCheckingEligibility] = useState(false);
 	const [showMint, setShowMint] = useState(false);
+	const [{ wallet }, connect] = useConnectWallet();
+	const { mintNft } = useContractFunctions();
+	const [mintData] = useMint();
 	return (
 		<Dialog maxWidth={false} open={open} onClose={onClose}>
 			<Box
@@ -38,16 +43,12 @@ export default function FreeMint({
 				<CloseBtnContainer>
 					<CloseBtn
 						onClick={() => {
-							// if (checkingEligibility) {
-							// 	setCheckingEligibility(false);
-							// } else if (showMint) {
-							// 	setShowMint(false);
-							// } else {
-							// 	onClose();
-							// }
 							onClose();
-							setCheckingEligibility(false);
-							setShowMint(false);
+							// timeout because close anim takes soem time
+							setTimeout(() => {
+								setCheckingEligibility(false);
+								setShowMint(false);
+							}, 500);
 						}}
 					></CloseBtn>
 				</CloseBtnContainer>
@@ -74,9 +75,12 @@ export default function FreeMint({
 				</Box>
 				<Divider sx={{ border: "2px solid black", my: 4 }}></Divider>
 				{checkingEligibility ? (
-					<EligibilityOld></EligibilityOld>
+					<>
+						<EligibilityOld></EligibilityOld>
+						{/* <EligibilityMint /> */}
+					</>
 				) : showMint ? (
-					<Mint></Mint>
+					mintData.txHash && !mintData.errorText && <Mint></Mint>
 				) : (
 					<Stack
 						justifyContent="center"
@@ -116,17 +120,27 @@ export default function FreeMint({
 							alignItems="center"
 							sx={{ "&>*": { maxWidth: "100%" } }}
 						>
-							{/* <Button
-								size="large"
-								sx={{
-									fontSize: { xs: 30, md: "50px" },
-									px: { xs: 5, lg: 13 },
-									py: { xs: 0, lg: 3 },
-								}}
-								onClick={() => setShowMint(true)}
-							>
-								Mint
-							</Button> */}
+							{isItApril30At4pmESTYet() && (
+								<Button
+									size="large"
+									sx={{
+										fontSize: { xs: 30, md: "50px" },
+										px: { xs: 5, lg: 13 },
+										py: { xs: 0, lg: 3 },
+									}}
+									onClick={() => {
+										if (wallet) {
+											mintNft();
+											setShowMint(true);
+										} else {
+											connect();
+											styleWeb3Account();
+										}
+									}}
+								>
+									{wallet ? "Mint" : "Connect Wallet"}
+								</Button>
+							)}
 							<Button
 								size="large"
 								sx={{
@@ -141,6 +155,11 @@ export default function FreeMint({
 						</Stack>
 					</Stack>
 				)}
+				{wallet && (
+					<Box my={2}>
+						<MintStatus />
+					</Box>
+				)}
 			</Box>
 		</Dialog>
 	);
@@ -149,8 +168,13 @@ export default function FreeMint({
 function EligibilityOld() {
 	const [checkedEligibility, setCheckedEligibility] = useState(false);
 	const [eligible, setEligible] = useState(false);
+	const [{ wallet }, connect, disconnect] = useConnectWallet();
+
+	console.log(wallet);
+
 	const [walletAddress, setWalletAddress] = useState("");
 	// const eligible = Boolean(walletAddress);
+
 	return (
 		<Box
 			sx={{ position: "relative", whiteSpace: "nowrap", overflow: "hidden" }}
@@ -169,6 +193,18 @@ function EligibilityOld() {
 					Enter wallet address.
 				</Typography>
 			</Box>
+			{wallet && (
+				<Box sx={{ mt: 2 }}>
+					{wallet.accounts.map((account) => {
+						return (
+							<Typography key={account.address}>
+								<strong>{account.address}</strong>:{" "}
+								<GetWhitelistEligibility addr={account.address} />
+							</Typography>
+						);
+					})}
+				</Box>
+			)}
 			<form
 				onSubmit={(e) => {
 					e.preventDefault();
@@ -219,78 +255,9 @@ function EligibilityOld() {
 	);
 }
 
-function EligibilityMint() {
-	const [{ wallet }, connect, disconnect] = useConnectWallet();
-	const { mintNft } = useContractFunctions();
-	return (
-		<Box>
-			<Box
-				sx={{
-					"&>*": { fontSize: { xs: "25px !important", md: "3rem !important" } },
-				}}
-			>
-				{/* <Typography fontWeight="bold" variant="h3">
-					Check if you are whitelisted.
-				</Typography>
-				<Typography fontWeight="bold" variant="h3">
-					Enter wallet address.
-				</Typography> */}
-			</Box>
-			{/* <form
-				onSubmit={(e) => {
-					e.preventDefault();
-					setCheckedEligibility(true);
-					setEligible(isWhitelisted(walletAddress));
-				}}
-			>
-				<TextField
-					sx={{ my: 3, width: "100%" }}
-					value={walletAddress}
-					onChange={(e) => {
-						setWalletAddress(e.target.value);
-					}}
-				></TextField>
-			</form> */}
-			{/* {checkedEligibility &&
-				(eligible ? (
-					<Typography variant="h5">
-						You are <i> whitelisted.</i>
-					</Typography>
-				) : (
-					<Typography variant="h5">
-						You are <i>not whitelisted.</i>
-					</Typography>
-				))} */}
-			<Button
-				sx={{
-					mx: "auto",
-					fontSize: { xs: 30, md: 45 },
-					px: { md: 13, xs: 5 },
-					display: "block",
-					mt: { xs: 5, lg: 10 },
-					mb: 2,
-				}}
-				onClick={() => {
-					// setCheckedEligibility(true);
-					// setEligible(isWhitelisted(walletAddress));
-					if (!wallet) {
-						connect();
-						styleWeb3Account();
-					} else {
-						mintNft();
-					}
-				}}
-			>
-				{wallet ? "Mint" : "Connect wallet"}
-			</Button>
-			{wallet && <MintStatus></MintStatus>}
-		</Box>
-	);
-}
-
 function Mint() {
 	const [poapClaimed, setPoapClaimed] = useState(false);
-
+	const [mintData] = useMint();
 	useEffect(() => {
 		() => {
 			setPoapClaimed(false);
@@ -351,16 +318,44 @@ function Mint() {
 					>
 						<Typography variant="h4">Successful claim POAP 1/7.</Typography>
 						<Typography variant="h4">
-							Click <Link href="https://google.com"> here</Link> to view
+							Click <Link href={"https://google.com"}> here</Link> to view
 						</Typography>
 					</Stack>
 				) : (
-					<Stack sx={{ "*": { fontWeight: "bold !important" } }} gap={2}>
-						<Typography variant="h4">Mint successful</Typography>
-						<Typography variant="h4">
-							Click <Link href="https://google.com"> here</Link> to view
-						</Typography>
-						<Typography variant="h4">Enter address to claim a POAP.</Typography>
+					<Stack
+						sx={{ "*": { fontWeight: "bold !important" } }}
+						gap={{ md: 10, xs: 3 }}
+						justifyContent="space-evenly"
+					>
+						<Stack gap={2}>
+							<Typography variant="h4">Mint successful</Typography>
+							<Typography variant="h4">
+								Click{" "}
+								<Link
+									sx={{ fontStyle: "italic", color: "blue" }}
+									href={`${EXPLORER_URI}/tx/${mintData.txHash}`}
+								>
+									{" "}
+									here
+								</Link>{" "}
+								to view
+							</Typography>
+						</Stack>
+
+						<Button
+							onClick={tweet}
+							sx={{
+								alignSelf: "center",
+								fontSize: { xs: "25px", lg: "30px" },
+								px: { lg: 5, xs: 3 },
+
+								// width: "482px",
+								// height: "82px",
+							}}
+						>
+							Share on twitter
+						</Button>
+						{/* <Typography variant="h4">Enter address to claim a POAP.</Typography>
 						<TextField></TextField>
 						<Button
 							sx={{
@@ -374,10 +369,39 @@ function Mint() {
 							onClick={() => setPoapClaimed(true)}
 						>
 							Claim POAP
-						</Button>
+						</Button> */}
 					</Stack>
 				)}
 			</Box>
 		</Stack>
 	);
+}
+
+function tweet(): void {
+	// Get the current page URL and title
+	const url = encodeURIComponent(window.location.href);
+	const title = encodeURIComponent(document.title);
+
+	// Get the image URL
+	// const imageUrl =
+	// 	"https://static.toiimg.com/thumb/msid-58515713,width-748,height-499,resizemode=4,imgsize-145905/Nice-in-pictures.jpg";
+	const imageUrl = "";
+
+	// Open the Twitter sharing window with the current page URL, title, and image URL
+
+	let tweetContent = `
+	"Art is a universal language." Just minted my @moth_valley Genesis Pass 🦋 
+	91 emerging artists take part in Season 1, get your passes here if you don't want to miss out: https://opensea.io/collection/moth-valley-pass ${imageUrl}`;
+
+	window.open(`https://twitter.com/intent/tweet?text=${tweetContent}`);
+}
+function isItApril30At4pmESTYet(): boolean {
+	const now = new Date();
+	// Create a Date object for the current time in EST
+	const est = new Date(
+		now.toLocaleString("en-US", { timeZone: "America/New_York" })
+	);
+
+	// Check if it is April 30th and 4PM or later
+	return est.getMonth() >= 3 && est.getDate() >= 30 && est.getHours() >= 16;
 }

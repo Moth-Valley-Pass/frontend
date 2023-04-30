@@ -9,4 +9,6 @@ export const NETWORK_ID = 43113;
 export const RPC_PROVIDER = "https://api.avax-test.network/ext/bc/C/rpc";
 export const EXPLORER_URI = "https://testnet.snowtrace.io/";
 
+export const OPENSEA_LINK = "https://opensea.io/collection/moth-valley-pass";
+
 export const H1_XS_FONT_SIZE = "30px";

@@ -7,13 +7,27 @@ import Seasons from "./components/Seasons";
 import FreeMint from "./components/FreeMint";
 import { useConnectWallet } from "@web3-onboard/react";
 import { useSetChain } from "@web3-onboard/react";
-import { NETWORK_ID, NETWORK_NAME } from "./CONSTANTS";
+import { CONTRACT_ADDR, NETWORK_ID, NETWORK_NAME } from "./CONSTANTS";
 import { useMint } from "./contexts/MintContext";
 
 export default function UILayer({ sx }: { sx?: SxProps }) {
 	const [seasonsOpen, setSeasonsOpen] = useState(false);
 	const [freeMintOpen, setfreeMintOpen] = useState(false);
 	const [{ wallet }, connect, disconnect] = useConnectWallet();
+	const [uniqueOwners, setUniqueOwners] = useState(0);
+
+	useEffect(() => {
+		fetch("https://api.opensea.io/api/v1/collection/moth-valley-pass")
+			.then((response) => response.json())
+			.then((data) => {
+				setUniqueOwners(data.collection.stats.num_owners);
+				console.log(
+					`Total number of owners: ${data.collection.stats.num_owners}`
+				);
+			})
+			.catch((error) => console.error(error));
+	}, []);
+
 	const [
 		{
 			connectedChain, // the current chain the user's wallet is
@@ -135,7 +149,8 @@ export default function UILayer({ sx }: { sx?: SxProps }) {
 					>
 						<Marquee gradientWidth={0} delay={0.5}>
 							&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;{formatDate()} -&nbsp;
-							<strong>875</strong>&nbsp;Community Members - Season&nbsp;
+							<strong>{uniqueOwners}</strong>&nbsp;Community Members -
+							Season&nbsp;
 							<>1</>&nbsp;:&nbsp;
 							<strong>Game of Chance</strong>&nbsp;-&nbsp;<strong>91</strong>
 							&nbsp;Unique Artworks -
