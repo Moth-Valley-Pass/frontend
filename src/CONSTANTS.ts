@@ -29,7 +29,7 @@ function getConstants() {
 	let RPC_PROVIDER = "https://api.avax-test.network/ext/bc/C/rpc";
 	let EXPLORER_URI = "https://testnet.snowtrace.io/";
 
-	const is_prod = false;
+	const is_prod = true;
 
 	if (is_prod) {
 		CONTRACT_ADDR = "0x32A9D664Ef2383Abc1DE30e4ACAb322AE84b4840";
