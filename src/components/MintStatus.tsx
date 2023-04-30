@@ -1,12 +1,7 @@
 import React from "react";
 import { useMint } from "../contexts/MintContext";
 import { Link, Box, Alert, Typography, Stack } from "@mui/material";
-import {
-	EXPLORER_URI,
-	NETWORK_ID,
-	AVAX_TESTNET,
-	NETWORK_NAME,
-} from "../CONSTANTS";
+import { EXPLORER_URI, NETWORK_ID, NETWORK_NAME } from "../CONSTANTS";
 import { useConnectWallet } from "@web3-onboard/react";
 import { useSetChain } from "@web3-onboard/react";
 
